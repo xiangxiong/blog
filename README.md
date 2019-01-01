@@ -3,10 +3,14 @@
 ## 进度
 
 
+## 原则
+1、
+
 ## 专栏
 
 ## 深入理解React系列
-
+1、
+2、
 
 ## 深入系列目录
 
@@ -95,6 +99,16 @@
 如果有疑问或者发现错误，可以在相应的 issues 进行提问或勘误。
 
 如果喜欢或者有所启发，欢迎 star，对作者也是一种鼓励。
+
+## 指导思想
+1、 react,css,javascript,es6.
+
+## 参考文献
+https://github.com/mqyqingfeng/Blog 
+https://juejin.im/post/5bbc54a2e51d450e5a7445b4
+https://github.com/xiaohesong/TIL
+https://react.css88.com/docs/getting-started.html
+https://mp.weixin.qq.com/s/PWSeeqDwu8QOcamlo_FJrA
 
 ## License
 
