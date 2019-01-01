@@ -1,20 +1,10 @@
-# 冴羽的博客
+# 向雄的博客
 
 ## 进度
 
-JavaScript深入系列 15 篇已完结。
-
-JavaScript专题系列 20 篇已完结。
-
-underscore 系列 8 篇已完结。
-
-ES6 系列正在发布中……
 
 ## 专栏
 
-* [掘金主页](https://juejin.im/user/58e4b9b261ff4b006b3227f4)
-* [segmentfault主页](https://segmentfault.com/u/yayu/articles)
-* 新开了 [知乎专栏](https://zhuanlan.zhihu.com/c_1042806379215601664)，欢迎关注
 
 ## 深入系列目录
 
@@ -93,10 +83,6 @@ ES6 系列正在发布中……
 18. [ES6 系列之我们来聊聊装饰器](https://github.com/mqyqingfeng/Blog/issues/109)
 19. [ES6 系列之私有变量的实现](https://github.com/mqyqingfeng/Blog/issues/110)
 20. [ES6 完全使用手册](https://github.com/mqyqingfeng/Blog/issues/111)
-
-## 友情链接
-
-1. [如何轻松拿到淘宝前端 offer](https://juejin.im/post/5bbc54a2e51d450e5a7445b4)
 
 ## 注意
 
