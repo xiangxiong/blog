@@ -12,6 +12,9 @@
 1、
 2、
 
+## 基础系列文章
+1、
+
 ## 深入系列目录
 
 1. [JavaScirpt深入之从原型到原型链](https://github.com/mqyqingfeng/Blog/issues/2)
