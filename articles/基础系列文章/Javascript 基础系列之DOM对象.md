@@ -174,6 +174,9 @@ getElementByID,getElementsByName,getElementsByTagName 区别
 * appendChild(),insertBefore(),replaceChild(),
 createElement(),setAttribute(),getAttribue().
 
+## 思考题目:
+1、在leetCode 多看看javascript 面试题目?
+
 
 
 
