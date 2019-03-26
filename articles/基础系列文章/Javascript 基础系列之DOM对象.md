@@ -8,7 +8,7 @@
  && || ! 逻辑判断符号.
 
  if else else if
-
+ 
  while(true) 循环 do ... while 循环先执行一次.
 
  for 循环
@@ -175,7 +175,11 @@ getElementByID,getElementsByName,getElementsByTagName 区别
 createElement(),setAttribute(),getAttribue().
 
 ## 思考题目:
-1、在leetCode 多看看javascript 面试题目?
+1、在leetCode 多看看 Javascript 面试题目.
+2、对javascript 底层源码要多看看.
+
+
+
 
 
 

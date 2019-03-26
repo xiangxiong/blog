@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>面向对象程序设计.</title>
+    <script>
+        /*
+          简单的面向对象.
+        */
+        var obj = new Object();
+        obj.name = 'z3';
+        obj.sex = '男';
+        obj.sayName = function(){
+            alert('我是张三');
+        }
+
+        // 类的概念
+
+        // 第一种形式 工厂模型
+        // 创建实例对象.
+        // function createPerson(name,sex,age){
+        //     var obj = new Object();
+
+        //     obj.name = name;
+        //     obj.sex = sex;
+        //     obj.age = age;
+        //     obj.sayName = function(){
+        //         alert(this.name);
+        //     }
+
+        //     return obj;
+        // }
+
+        // var p1 = createPerson('z3','男',20);
+        // var p2 = createPerson('z4','女', 25);
+
+        // alert(p1.sayName());
+
+
+        // 第二种形式 构造函数式 new Array new Date
+        // 函数的第一个字母大写 (类的模板)
+        function Person(name,age,sex){
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+            this.sayName = function(){
+                alert(this.name);
+            }
+        }
+
+        // 构造一个对象 new 关键字 传递参数. 执行模板代码. 返回对象.
+        var p1 = new Person('小1',20,'男');
+        var p2 = new Person('小1',21,'女');
+        alert(p1.name);
+
+     // alert(p2 == p1);
+     // 类的概念: 根据模板创建出不同的实例对象.
+     // alert(p1.constructor == Person);
+     //   alert(p1 instanceof Person);
+     //   alert(p1 instanceof Object);
+
+     // 创建对象的方式:
+     // 1、当作构造函数去使用.
+     var p1 = new Person('小1','20','男');
+
+     // 2、作为普通的函数去使用.
+     // 在全局环境里面定义属性并赋值.
+     Person('小1','20','男'); 
+
+     //  alert(name);
+     //  在另一个对象的作用域调用
+     var o = new Object();
+     //  call apply.
+     Person.call(o,'小1','20','男');
+     alert(o.name);
+
+     // 两种定义类的方式,三种定义类的实例 的方法。
+    </script>
+</head>
+<body>
+
+</body>
+</html>

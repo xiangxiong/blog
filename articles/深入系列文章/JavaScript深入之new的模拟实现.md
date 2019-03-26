@@ -70,7 +70,7 @@ var person = objectFactory(Otaku, ……)
 ```js
 // 第一版代码
 function objectFactory() {
-
+    
     var obj = new Object(),
 
     Constructor = [].shift.call(arguments);
@@ -80,7 +80,6 @@ function objectFactory() {
     Constructor.apply(obj, arguments);
 
     return obj;
-
 };
 ```
 

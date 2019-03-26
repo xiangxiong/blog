@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>安居客sdk.</title>
+</head>
+<script src="./jquery-3.3.1.min.js"></script>
+<script>
+// function beforegetcode(phoneNumber){
+// }
+
+function beforegetcode(phoneNumber){
+    try
+    {
+        var rtData = null;
+
+        if(phoneNumber.length>0 && phoneNumber.constructor == String){
+            var url = 'https://login.anjuke.com/login/checkbroker';
+            $.ajax({
+                async: false,
+                type : "GET",
+                url : url,
+                dataType : "jsonp",
+                success : function(data){
+                    rtData = data;
+                }
+            });
+        }
+
+        return rtData;
+    }
+    catch(e)
+    {
+        console.log("beforegetcode",e);
+    }
+
+}
+
+window.onload = function(){
+    var data = beforegetcode('15618925212');
+    console.log("data",data);
+}
+</script>
+<body>
+    <div>
+        验证经纪人
+    </div>
+    <div>
+
+    </div>
+</body>
+</html>

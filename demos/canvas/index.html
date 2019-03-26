@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>经典的坦克大战</title>
+</head>
+<body>
+    <h1>经典的坦克大战</h1>
+    <canvas id="myCanvas" width="400px" height="300px">
+    </canvas>
+</body>
+<script>
+        var canvas = document.getElementById("myCanvas"),
+            context = canvas.getContext("2d");
+
+        // 画出直线
+        // moveTo 设置点的位置,
+        context.moveTo(20,20);
+        // moveTo 设置第二个点的位置.
+        context.lineTo(20,90);
+        context.stroke();
+
+        // 画出一个填充的三角形 --> 路径.
+        
+        // 开始新路径.
+        context.beginPath();
+
+        context.moveTo(40,20);
+        context.lineTo(40,90);
+        context.lineTo(80,90);
+
+        // 闭合路径. 把最后这个点和第一个点moveTo() 闭合.
+        context.closePath();
+
+        // 填充矩形.
+        context.fill();
+        // 空心矩形.
+        context.stroke();
+
+        // 画出矩形(对于矩形,可以不用路径.)
+        // 提醒: stroke 划线, fill 就是填充.
+        context.strokeRect(100,20,70,70);
+
+        // 填充矩形
+        // 如果希望改变填充的颜色, 则修改画笔的 fillStyle
+        context.fillStyle = "#00FF00";
+        context.fillRect(180,20,70,70);
+
+        // 画出圆形 arc
+        // 六个参数: 
+        context.fillStyle = "#00FF00";
+        context.beginPath();
+        context.arc(270,40,20,0,2*Math.PI);
+
+        // 闭合圆圈.
+        context.closePath();
+        context.stroke();
+
+        // 画出填充的圆形.
+        context.fillStyle = "#FF0000";
+        context.beginPath();
+        context.arc(100,75,50,0,2*Math.PI);
+        context.stroke();
+
+
+        // 画出图片
+        var img1 = new Image();
+
+        // 指定图片
+        img1.src = "image/bomb_1.gif";
+
+        img1.onload = function(){
+            context.drawImage(img1,20,100,200,150);
+        }
+</script>
+
+<script type="text/javascript">
+    // 得到画布
+    // var canvas = document.getElementById("tankMap");
+    // var   context = canvas.getConext("2d");
+    
+    //     context.fillStyle = "#FF0000";
+    //     context.fillRect(0,0,150,75);
+
+    // 得到绘图上下文
+    // cxt.fillStyle = "#FFFFFF";
+    // // 先画出左边的矩形.
+    // cxt.fillRect(30,30,5,30);
+    // cxt.fillRect(30+15,30,5,30);
+
+    // 画出右边的矩形:
+    // 画出坦克的思路:
+    // 以坦克的左上角为参照点, 然后画出坦克的其他部分，这样的好处是当左上角的.
+    // 坐标变换, 坦克就整体移动.
+    // 画出自己的坦克, 使用前面的坦克.
+</script>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>面向对象程序设计.</title>
+    <script type="text/javascript">
+
+    // 思考：
+    // 可以用于什么地方:
+    // 验证一个知识点1: 原型的另外一个作用就是扩展对象中的属性和方法的.
+    // 知识验证点2: call,apply 的使用.
+    // 还有哪些例子: iForEach,
+
+    // ```
+    // call();
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call
+
+    // apply();
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
+
+    // bind();
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind
+    // 
+    http://www.kodyaz.com/articles/javascript-string-trim-with-javascript-trim-function-examples.aspx
+    // ```
+
+    var trimRightSpace = "1 leu     1  ";
+
+    String.prototype.iTrimRight = function(){
+        try{
+            // var listOfWhiteSpaceChars = " \f\n\r\t";
+
+            // var k = str.length - 1;
+
+            // while(k >= 0){
+            //     if (listOfWhiteSpaceChars.indexOf(str.chatAt(k)) == -1){
+            //         return str.substring(0,k+1);
+            //     }else{
+            //         k--;
+            //     }
+            // }
+
+            // this.i || (this.i = 0);
+            // // 进入 trim Right 核心代码的条件
+            // if(this.length>0 && this.constructor == String){
+            //     // 循环字符串
+            //     while(this.i < this.length){
+            //         var e = this[i]
+            //         this.i ++;
+            //     }
+            // }
+
+            // indexOf 如果要检索的字符串值没有出现，则该方法返回 -1.
+            // charAt 返回指定位置的字符串.
+            var ListOfWhiteSpaceChars = " \f\n\r\t";
+
+            var k = this.length - 1;
+            console.log("k",k);
+
+            while(k >= 0){
+                if (ListOfWhiteSpaceChars.indexOf(this.charAt(k)) == -1) {
+                    return this.substring(0, k + 1);
+                } else {
+                    k--;
+                }
+            }
+
+        }catch(e){
+
+        }
+        return this;
+    }
+
+    console.log(trimRightSpace.iTrimRight());
+    document.write(trimRightSpace.iTrimRight());
+
+    var arrForEachArray = [2,3,4];
+
+    var appendArray = [5,6];
+
+    var sTemp = "122";
+
+    Array.prototype.iForEach = function(fn){
+        try{
+            // 目的: 循环数组的每一项
+            this.i || (this.i = 0);
+            // 进入循环的核心条件
+            if(this.i < this.length && fn.constructor == Function){
+                // 循环遍历数组
+                while(this.i < this.length){
+                    // 获取当前项
+                    var e = this[this.i++];
+                    fn.call(e,e,this.i);
+                }
+                this.i = null;
+            }
+        }catch(e){
+
+        }
+        return this;
+    }
+
+    // 犯错1： 每个循环追加条件.
+    // 变量用了没有回收.
+    Array.prototype.iConcat = function(arry){
+        try{
+            // 代码执行 concat 核心代码的条件
+            if(arry.length > 0 && arry.constructor == Array){
+                // 循环追加的数组
+                for(var i = 0; i < arry.length; i++){
+                    this.push(arry[i]);
+                }
+            }
+        }catch(e){
+        }
+        return this;
+    }
+
+    console.log("arrForEachArray",arrForEachArray.iConcat(appendArray));
+    // arrForEachArray.iForEach(function(item,index){
+    //     console.log("item",item);
+    //     console.log("index",index);
+    // });
+    // 给数组加一个能遍历二维数组的方法.
+    var arr = [1,2,[2,[5,[6,7]]]];
+
+    Array.prototype.each = function(fn){
+        try
+        {
+            // 目的: 循环遍历数组的每一项
+            this.i || (this.i = 0);
+            
+            // 进入each 核心代码的范围
+            if(this.i < this.length && fn.constructor == Function){
+                // 循环遍历数组
+                while(this.i < this.length){
+                    // 获取遍历数组的当前项目
+                    var e  = this[this.i++];
+                    // 符合遍历数组的规则
+                    if(e && e.constructor == Array){
+                        e.each(fn);
+                    }else{
+                        fn.call(e,e);
+                    }
+                }
+                this.i =  null;
+            }
+        }
+        catch(e){
+        }
+        return this;
+    }
+
+    // arr.each(function(item){
+    //     console.log(item);
+    // })
+
+    // 原型的作用就是扩展对象中的属性和方法.
+    // 模拟Array 中 each 循环方法
+    // forEach
+
+    // javascript 底层开发人员规范.
+    // 首先要try ... catch ...
+    // 
+    
+    // how to 
+    // var arr = [1,2,3,[4,[5,[1,2]]]];    // arr.length;
+    // Array.prototype.each = function(fn){
+    //     // 目的: 循环遍历数组的每一项
+    //     this.i || (this.i = 0);
+
+    //     // 执行each 核心代码的限制条件
+    //     if(this.i < this.length && fn.constructor == Function){
+    //         // 循环遍历数组的每一项
+    //         while(this.i < this.length){
+    //             var e = this[this.i++]; // 获取当前遍历的项
+    //             console.log("e",e);
+    //             if(e && e.constructor == Array){
+    //                 // 直接递归
+    //                 e.each(fn);
+    //             }else{
+    //                 fn.call(e,e); // 把数组的当前元素传递给fn，并执行fn。
+    //             }
+    //         }
+    //         this.i  = null ; // 回收.
+    //     }
+    //     return this;
+    // }
+
+    // 思路: 
+    // 好的地方: 代码思路有了，但是不是正确的javascript 写底层代码的规范.
+
+
+    // // 特别好的思路和结构.
+    // Array.prototype.each = function(fn){
+    //     try{
+    //         // 1.目的: 遍历数组的每一项.
+    //         //  var i = 0; // 计数器 记录当前遍历的元素的位置
+    //         this.i || (this.i = 0); // 给数组加一个变量，不跟里面代码产生耦合.
+
+    //         // 2. 严谨的判断 什么时候去走each 核心方法.
+    //         // 当数组的长度大于0 的时候, && 传递的参数必须是函数.
+    //         if(this.length > 0 && fn.constructor == Function){
+    //             // 循环遍历数组的每一项
+    //             while(this.i < this.length){ 
+    //                 // 获取数组的每一项
+    //                 var e = this[this.i++];
+
+    //                 // 如果当前元素获取到了,并且当前元素是一个数组.
+    //                 if(e && e.constructor == Array){
+    //                     // 直接做递归操作.
+    //                     e.each(fn);
+    //                 } else {
+    //                     // 这个目的就是为了把数组的当前元素传递给fn函数, 并让函数执行.
+    //                     fn.call(e,e);
+    //                     // fn.apply(e,[e]);
+    //                     // 如果不是数组 (那就是一个单个元素).
+    //                     // 执行一下传递的函数.
+    //                     // 就是为了执行传递的函数.
+    //                     // 并且把参数传递给
+    //                 }
+    //                 // while 循环的范围.
+    //                 // this.i++;
+    //             }
+    //             this.i = null; // 释放内存 垃圾回收机制 回收变量
+    //             // 写底层循环,尽量不用for...in
+    //         }
+    //     } catch(ex){
+    //         // do something
+    //     }
+    //     return this;
+    // }
+
+    // arr.each(function(item){
+    //     // alert(item);
+    //     console.log(item);
+    // })
+
+    // Array.prototype.each = function(fn){
+    //     this.i || (this.i = 0); // why
+
+    //     try{
+    //         if(this.i < this.length && this[this.i].constructor == Array){
+
+    //             var e = this[this.i];
+
+    //             while(this.i < e.length){
+    //                 if(e.constructor == Array){
+    //                     e.each(e);
+    //                 }else{
+    //                     fn(e);
+    //                 }
+    //             }
+    //         }
+    //         this.i ++;
+    //     }catch(e){
+
+    //     }
+
+    //     return this;
+    // }
+
+    // arr.forEach(function(item,index,Array){
+    //     alert(item);
+    // });
+    // 思路有啥问题:
+    // 1、没有考虑循环执行的条件. 啥时候才执行核心代码.
+    // 
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

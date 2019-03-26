@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>面向对象程序设计.</title>
+    <script>
+
+        // // 闭包单体.
+        // var BHX = {};
+        // BHX.Singleton = (function(){
+
+        //     // 添加自己的私有成员.
+        //     // 创建自己私有的作用域. 别人没有办法访问.
+        //     var a1 = true;
+        //     var a2 = 10;
+        //     var f1 = function(msg){
+        //         console.log("msg",msg);
+        //     };
+        //     var f2 = function(msg){
+        //         console.log("msg",msg);
+        //     }
+
+        //     // 块级作用域里的执行结果赋值类
+        //     // 我的单体对象.
+        //     return {
+        //         attr1: a1,
+        //         attr2: a2,
+        //         method1:function(msg){
+        //             return f1(msg)
+        //         },
+        //         method2:function(msg){
+        //             return f2(msg)
+        //         }
+        //     }
+        // })();
+
+        // BHX.Singleton.method1('ddd');
+
+        // 单体模式之懒性单体和分支单体.(和闭包单体有一些相似的地方).
+
+        var Ext = {};
+        Ext.Base = (function(){
+
+            // 私有变量, 控制返回的单体对象
+            var uniqInstance; // undefined
+
+            // 需要一个构造器, init 初始化单体对象的方法.
+            function init(){
+                // 私有成员变量.
+                var a1 = 10;
+                var a2 = true;
+                var fn1 = function(){
+                    alert('fn1');
+                };
+                var fn2 = function(params){
+                    console.log(params.name);
+                    // alert('fn2');
+                };
+
+                return {
+                    attr1:a1,
+                    attr2:a2,
+                    method1:function(){
+                        return fn1();
+                    },
+                    method2:function(msg){
+                        return fn2(msg);
+                    }
+                }
+            }
+
+            return {
+               getInstance : function(){
+                   if(!uniqInstance){  // 如果不存在,创建单体实例.
+                     uniqInstance = init();
+                   }
+                   return uniqInstance;
+               }
+            }
+
+        })();
+        alert(Ext.Base.getInstance().attr1);
+        var obj = {
+            name:'123'
+        };
+        Ext.Base.getInstance().method2(obj);
+        // alert();
+
+        // 分支单体 (判断程序的分支<浏览器的差异检测>)
+        // 扩展: 可以用来在不同的环节下切不同的变量.
+        // 小程序改版.
+
+        var Ext = {};
+        var def = true;
+        
+        Ext.More = (function(){
+            var objA = {  // firefox
+                attr1:'firefox 1' // 属性1
+                // 属性2
+                // 方法1
+                // 方法2
+            },
+            objB = {     //  ie.
+                attr1:'ie 1' // 属性1
+                // 属性2
+                // 方法1
+                // 方法2
+            };
+            return (def) ? objA : objB;
+        })();
+
+        // 下次pc 端做项目设计.
+        // 可以把api 全部先掉完. 用懒汉式单体封装一个类.
+        // 做设计好单元测试类,封装好工具类.
+        // 下次项目设计把调用的工具类全部先完.
+        // 弹窗先封装出来.
+
+        // 明天任务:按照prd 跑通, 不放过任何一个细节,
+        // 将代码按照懒汉式单例重新封装一下.
+        // 界面上复杂的事情,如果10分钟没弄出来.放过复杂的交互.
+        // 自测完之后，交给国利测试.
+        // 测试用例给书雄去做.
+        alert(Ext.More.attr1); 
+
+        // 参考文献:
+        // http://www.icoolxue.com/album/show/367
+    </script>
+</head>
+<body>
+
+</body>
+</html>
