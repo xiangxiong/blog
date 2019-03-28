@@ -228,23 +228,49 @@ Normalize.css.
             word-break: break-word;  keep-all;
             break-word 所有的单词换行，keep-all 单词换行，中文句子换行。
             white-space: normal;
-
     ```
 
-> hack 案例.
+> 非布局样式 (装饰性属性)
 
-* 
+* 字重（粗体） font-weight. 100 - 900 最细-最粗.  一般使用 nomal bold
+* 斜体 font-style:itatic.
+* 下划线: text-decoration.
+* 指针 cursor.
 
+> css hack 案例.[todo:]
+
+* Media Query Hacks.
+* @media \0screen \screen \9.
+* @media \0screen {}.
+
+* hack 即不合法但生效的写法.
+* 主要用于区分不同浏览器.
+* 缺点： 难理解 ，难维护，易失效.
 
 > 布局.
 
 
+> css 预处理器.
+* 基于css 的另外一种语言.
+* css 模块化的效果.
+* 嵌套写法的强制约束.
+    * 
 
+* sass 嵌套.
 
+* 可以借鉴的地方：
+* 变量. fontsize ,bgcolor: 
+textBgColor,textColor,linkColor,@headingFontSize:16px;
+contentFontSize:12px; footerSize:12px;
 
+* 变量是要先规划好. 公共的变量要有关联.
+* less 和 sass 有什么区别?
+* https://www.bilibili.com/video/av45497332/?p=51
+* sass 符号不一样.
 
-
-
+*  less mixin.
+*  include block(@font-size)
+*  
 
 
 
