@@ -8,7 +8,7 @@
 
 * 效果图:
 
-  *  ![image](https://github.com/xiangxiong/blog/blob/master/articles/images/ship.gif)
+  *  ![image](https://github.com/xiangxiong/blog/blob/master/articles/images/ship01.gif)
 
 * 编写组件的基本思路:
     * 1、分析组件要实现的基本功能.对组件进行拆分.确定实现功能的先后顺序.
