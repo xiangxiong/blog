@@ -3,7 +3,9 @@
 * 简介:
 
     * 项目中使用到弹窗类的组件,重新制造了一个轮子.
+
     * 源码地址: https://github.com/xiangxiong/webapp-mp/tree/master/src/components/modal
+   
     * 编写完modal组件总计花了28分钟.
 
 * 效果图:
@@ -58,6 +60,7 @@
         }
     }
   ```
+
 > 三、分步骤实施
 
 * 实现 UI 功能.
@@ -153,7 +156,6 @@
 * 3、掌握 componentWillReceiveProps 这个生命周期函数的用法。
 
 * 4、其他的项目使用了 classnames 拼装样式, lodash 验证传入的属性是否是函数, PropTypes 验证父组件传入的数据格式是否正确.
-
 
 > 五、参考文献:
 
