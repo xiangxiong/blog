@@ -47,7 +47,7 @@
      onConfirm | 点击确认按钮触发的事件	
 
   * 数据结构
-
+  
   ```
     this.state = {
         modal:{
