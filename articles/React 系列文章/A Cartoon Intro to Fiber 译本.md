@@ -16,7 +16,7 @@
 ### React Fiber 的方式
 * 破解 javascript 中同步操作时间过长的方法其实很简单---分片》
 * 把一个耗时长的任务分成很多小片，每个小片的运行时间很短，虽然总时间依然很长，但是在每个小片执行完之后，多给其他任务一个执行的机会，这样唯一的线程都不会被占用，其他任务依然有运行的机会。
-* 维护每一个分片的树结构，就是fiber。
+* 维护每一个分片的树结构，就是fiber.
 
 ### React Fiber 的方式
 * 理想情况下，React Fiber 一次更新过程会分成多个分片完成，多以完全可能一个更新任务还没有完成，就被
@@ -50,8 +50,18 @@
 
 * shouldComponentUpdate，这个函数的作用是返回一个true 或者 false. 不会有影响.
 
-* componentWillMount和componentWillUpdate 这两个函数往往包含副作用，要重点看下
+* componentWillMount 和 componentWillUpdate 这两个函数往往包含副作用，要重点看下
 
 ### 用最简单的话来描述.
+*  Fiber 是什么?
+    * react 对核心算法的一次重新实现.
 
-* 
+*  Fiber 解决什么问题?
+    * 解决JavaScript中同步操作时间过长的导致长时间占用主线程.
+
+*  Fiber 有什么缺点，如果移植会对现有程序造成什么影响?
+    *  
+
+### 精度文章:
+* https://zhuanlan.zhihu.com/p/37095662
+* https://zhuanlan.zhihu.com/p/35578843
