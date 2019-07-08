@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <!--  Meta  -->
+  <meta charset="UTF-8" />
+  <title>My New Pen!</title>
+  
+  <!--  Styles  -->
+  <link rel="stylesheet" href="styles/index.processed.css">
+</head>
+<body>
+  <div>fdsafds</div>
+</body>
+</html>
+<script>
+window.onload = function(){
+    this.onNavOpenClick();
+}
+
+var eventsToSend = [];
+
+function onNavOpenClick(){
+    // Animate the menu
+
+    // Store the event for later
+    eventsToSend.push({
+        category:'button',
+        action:'click',
+        label:'nav',
+        value:'open'
+    });
+}
+
+function schedulePendingEvents(){
+    if(isRequestIdleCallbackScheduled)
+        return;
+    
+    isRequestIdleCallbackScheduled = true;
+
+    if('requestIdleCallback' in window){
+        requestIdleCallback(processPendingAnalyticsEvents,{timeout:2000});
+    }
+    else
+    {
+        processPendingAnalyticsEvents();
+    }
+}
+
+function processPendingAnalyticsEvents(deadline){
+  console.log('processPendingAnalyticsEvents');
+}
+
+</script>
