@@ -17,9 +17,16 @@
     * 实现模板的预编译和组装。比如懒加载的页面组装新元素,再用 requesAnimationFrame 更新到DOM上。注意,不要在 requestIdleCallBack 中直接修改DOM.
 
 * 使用 RequestIdleCallBack 发送分析数据.
-    
     *  
+    * 
+
+* 思考的问题:
+    * requestAnimationFrame & requestIdleCallback & setImmediate 有啥区别?
+    * 浏览器帧原理.
     * 
 
 * 参考文献:
      * https://developers.google.com/web/updates/2015/08/using-requestidlecallback
+     * https://juejin.im/post/5c9c66075188251dab07413d 今日头条 字节跳动.
+     * https://aerotwist.com/blog/the-anatomy-of-a-frame/ 在google 浏览器部门工作.
+     
