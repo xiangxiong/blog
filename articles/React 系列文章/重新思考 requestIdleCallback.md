@@ -11,15 +11,14 @@
 * requestIdleCallback 可以用来解决哪些问题？
 
     * Fiber 里面的任务调度.
-    
     * 上报分析书。比如用户轻触的时候，需要将该事件上报。为了影响轻触之后动画的流畅性，可以使用requestIdleCallback 实现.
-    
     * 实现模板的预编译和组装。比如懒加载的页面组装新元素,再用 requesAnimationFrame 更新到DOM上。注意,不要在 requestIdleCallBack 中直接修改DOM.
 
 * 使用 RequestIdleCallBack 发送分析数据.
     *  
     * 
-
+    * 
+    
 * 思考的问题:
     * requestAnimationFrame & requestIdleCallback & setImmediate 有啥区别?
     * 浏览器帧原理.
