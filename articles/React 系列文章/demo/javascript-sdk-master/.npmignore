@@ -1,0 +1,14 @@
+coverage
+demo
+node_modules
+src
+test
+script
+tools
+.babelrc
+.gitignore
+.travis.yml
+bower.json
+gulpfile.babel.js
+readme.txt
+.nyc_output

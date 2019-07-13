@@ -1,0 +1,11 @@
+node_modules/
+package/
+*tgz
+*.tar.gz
+coverage
+*.swp
+dist/js-sdk-api-docs
+npm-debug.log
+.nyc_output
+dist
+docs
