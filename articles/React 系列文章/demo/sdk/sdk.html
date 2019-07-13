@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--  Meta  -->
+  <meta charset="UTF-8" />
+  <title>My New Pen!</title>
+</head>
+<body>
+  <div>fdsafdsefdsaee</div>
+</body>
+</html>
+<script>
+    (function () {
+     console.log('tet');
+     // add a queue event here
+     //   SDKName = window.SDKName || (window.SDKName = []);
+     // add a queue event here
+     SDKName = window.SDKName || function () {
+      (SDKName.q = SDKName.q || []).push(arguments);
+     };
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'http://xxx.com/sdk.js';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    })();
+  
+    // execute your script immediately here
+    // SDKName.push(['some arguments']);
+    SDKName('some arguments');
+  </script>
