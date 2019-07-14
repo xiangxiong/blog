@@ -465,7 +465,6 @@ document.addEventListener('touchmove', function(e){ e.preventDefault(); }); // p
 
 - 我们的SDK用Ajax请求和服务器通信，虽然可以用jQuery ajax请求，但这里我们有更好的方案实现它。
 
-
 ### 参考文献:
  - https://www.zcfy.cc/article/javascript-sdk-design-guide-530.html
  - 第三方JavaScript.
