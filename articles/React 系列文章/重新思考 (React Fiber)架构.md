@@ -27,8 +27,8 @@
         * web worker.
         * intersectionObserver.
 
-    * 我们依次成为浏览器层面的帧数控制调用,闲时调用，多线程调用,进入可视区调用。
-
+    * 我们依次成为浏览器层面的帧数控制调用,闲时调用，多线程调用,进入可视区调用.
+    
     * requestAnimationFrame 在做动画时经常调用,jQuery 新版本都使用它，IntersectionObserver 可以用到ListView 中. 而requestIdleCallBack 是一个生脸孔，而React 官方用了他。
 
     * 刚才说updateFiberAndView 有出两个时间段, 一个给自己的，一个给浏览器的，requestAnimationFrame 能帮我们解决第二个时间段, 从而确保整体都是60帧或75帧 流畅运行.
