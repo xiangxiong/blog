@@ -20,6 +20,17 @@
 
 * 正因为有了这个神器，我们在requestIdleCallBack 的回调中加入一个WorkLoop 的方法，它每次接触一个fiber时，就判定一下当前的时间，看是否有闲空的时间让他进行beginWork 操作(相当于刚才的第一个阶段，设置dom,instance,willlXXX) ，没有就把它放进队列中。把控制器让渡给视图渲染。下一次requestIdleCallBack唤起是，从队列将刚才那个fiber取出来，执行beginWork.
 
+    * react.componet vs react.pureComponent 对比?
+        * React.PureComponent 与 React.Component 几乎完全相同，但 React.PureComponent 通过prop和state的浅对比来实现 shouldComponentUpate().
+        * React.PureComponent 的 shouldComponentUpdate() 只会对对象进行浅对比。如果对象包含复杂的数据结构，它可能会因深层的数据不一致而产生错误的否定判断(表现为对象深层的数据已改变视图却没有更新, 原文：false-negatives)。当你期望只拥有简单的props和state时，才去继承 PureComponent ，或者在你知道深层的数据结构已经发生改变时使用 forceUpate() 。或者，考虑使用不可变对象来促进嵌套数据的快速比较。
+        * 此外,React.PureComponent 的 shouldComponentUpate() 会忽略整个组件的子级。请确保所有的子级组件也是”Pure”的.
+
+    *  
+
+    * 参考文献:
+        * 1、https://juejin.im/post/5b45d406f265da0f8e19d4c8.
+    
+    * 
 
 * 解读 Beyond React 16 by Dan Abramov - JsConf.
 
