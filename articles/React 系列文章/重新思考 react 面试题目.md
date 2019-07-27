@@ -87,15 +87,11 @@
     * 3、多个hoc 组件包装的时候也会出现属性冲突的问题. WithMouseHoc(WithCatHoc(CatItem))。当有多个高级组件嵌套的时候会有属性冲突.
     * 4、render props 和 hoc 组合使用.
 
-* 现在高阶组件可以通过render Props 来替换.
-    * 
-
 * render Props的基本定义.
     * 1、
 
 * 可以使用react Hooks 来替换 HOC 和 render Props?
     * 1、
-
 
 * 将错误组件封装成高阶组件 HOC & render Props & react Hooks.
     * 解决代码重复书写多次的问题.
@@ -322,6 +318,98 @@
 * 问题:
     * 为什么redux 要返回一个新的对象？或者state 为啥不能是不可变的.
 
+* React Hooks 相关问题:
+    * 1、react 诞生的背景是什么?
+        * 1. 在组件之间复用状态逻辑很难
+            * render props,hoc 这类方案需要重新组织你的组件结构，使得代码难以理解，高级组件和render props 这些抽象层的组件会形成地狱嵌套。 React 需要为共享状态逻辑提供更好的原生途径
+            * Hook 使你在无需修改组件结构的情况下复用状态逻辑。
+            * 可以使用 Hook 从组件中提取状态逻辑，使得这些逻辑可以单独测试并复用。
+
+        * 2. 复杂组件变得难以理解
+            * Hook 将组件中相互关联的部分拆分成更小的函数.
+            * 我们经常维护一些组件，组件起初很简单，但是逐渐会被状态逻辑和副作用充斥。每个生命周期常常包含一些不相关的逻辑.
+            * 组件常常在 componentDidMount 和 componentDidUpdate 中获取数据。但是，同一个 componentDidMount 中可能也包含很多其它的逻辑，如设置事件监听，而之后需在 componentWillUnmount 中清除.
+            * 而完全不相关的代码却在同一个方法中组合在一起。如此很容易产生 bug，并且导致逻辑不一致.
+
+        * 3. 使用 Hook 其中一个目的就是要解决 class 中生命周期函数经常包含不相关的逻辑，但又把相关逻辑分离到了几个不同方法中的问题.
+
+        * hooks faq
+            * https://zh-hans.reactjs.org/docs/hooks-faq.html.
+            * https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889
+
+        * 4、什么是hook?
+            * Hook 是一些可以让你在函数组件里面使用state 以及生命周期等特性的函数。Hook 不能在class 中使用。
+
+    * 2、核心知识点有哪些?
+        * 第三方的库会有哪些改变. redux,react router.
+        * 如何测试react hook 组件.
+        * 生命周期如何对应hook?
+            * useEffect 将 componentDidMount、componentDidUpdate 和 componentWillUnmount 具有相同的用途，只不过被合并成了一个 API.
+
+        * 调用 useState 方法的时候做了什么?
+            * 
+
+        * 如何获取数据?
+        *  https://codesandbox.io/s/jvvkoo8pq3.
+        *  https://www.robinwieruch.de/react-hooks-fetch-data/.
+
+
+        * 相关的约束:
+            * 1、只能在函数最外层调用 Hook。不要在循环、条件判断或者子函数中调用。
+            * 2、只能在 React 的函数组件中调用 Hook。
+
+        * 自定义hook
+            * 
+
+        * State Hook.
+            * 
+
+        * Effect Hook.
+            * 
+
+        * 其他Hook
+            * useContext.
+            * 
+            
+    * 3、如何对现有代码进行改善?
+        * 
+        * 
+        * 
+
+    * 4、我将如何使用?
+        * 写一个具体的例子.
+        * 
+
+    * 和 class 相比有哪些优点:
+        * 1、在这个 class 中，我们需要在两个生命周期函数中编写重复的代码。
+        * useEffect 做了什么？
+            * 通过使用这个 Hook，你可以告诉 React 组件需要在渲染后执行某些操作，并且在执行 DOM 更新之后调用它.
+        * 为什么在组件内部调用 useEffect？
+        * useEffect 会在每次渲染后都执行吗?
+            * 是的，默认情况下，它在第一次渲染之后和每次更新之后都会执行.
+        * 忘记正确地处理 componentDidUpdate 是 React 应用中常见的 bug 来源.
+            * 1、举例子:好友在线状态的例子. 根据好友id 显示是否在线的状态，如果状态更新了的话，卸载的时候还可能是记住了原来的id。
+            * 2、hook 并不需要特定的代码来处理更新逻辑，因为 useEffect 默认就会处理。它会在调用一个新的 effect 之前对前一个 effect 进行清理。
+
+        * 跳过 Effect 进行性能优化
+            * 每次渲染后都执行清理或者执行 effect 可能会导致性能问题.
+                * 这是很常见的需求，所以它被内置到了 useEffect 的 Hook API 中。如果某些特定值在两次重渲染之间没有发生变化，你可以通知 React 跳过对 effect 的调用，只要传递数组作为 useEffect 的第二个可选参数即可
+                ```
+                useEffect(() => {
+                document.title = `You clicked ${count} times`;
+                }, [count]); // 仅在 count 更改时更新
+                ```
+                * 如果想执行只运行一次的 effect（仅在组件挂载和卸载时执行），可以传递一个空数组（[]）作为第二个参数。这就告诉 React 你的 effect 不依赖于 props 或 state 中的任何值，所以它永远都不需要重复执行。这并不属于特殊情况 —— 它依然遵循依赖数组的工作方式.
+
+    * 注意:
+        * 与 class 组件中的 setState 方法不同，useState 不会自动合并更新对象。你可以用函数式的 setState 结合展开运算符来达到合并更新对象的效果.
+        * 要记住 effect 外部的函数使用了哪些 props 和 state 很难。这也是为什么 通常你会想要在 effect 内部 去声明它所需要的函数。 这样就能容易的看出那个 effect 依赖了组件作用域中的哪些值.
+        * 
+
+    * 思考题目:
+         * 问题:Hook 使用了 JavaScript 的闭包机制 是怎么使用的?
+         * 
+
 * key 值有什么用?
 
     * 
@@ -376,6 +464,8 @@
 * (在构造函数中)调用 super(props) 的目的是什么?
 
 * redux 有什么缺点?
+
+* react 面试题目. https://github.com/semlinker/reactjs-interview-questions
 
 * 三大框架背后的设计思想?
 
