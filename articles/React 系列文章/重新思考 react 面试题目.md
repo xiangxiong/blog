@@ -410,6 +410,7 @@
          * 问题:Hook 使用了 JavaScript 的闭包机制 是怎么使用的?
          * react hooks 如何在项目中使用? 一个新的项目. 写 5 个页面. ok
          * reack hooks 多提供了哪些api? 多什么用法？
+         * useReducer 之后 还要 redux 干啥？
 
     * 好的项目:
         * https://github.com/tannerlinsley/react-form.
