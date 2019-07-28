@@ -357,6 +357,7 @@
         * 相关的约束:
             * 1、只能在函数最外层调用 Hook。不要在循环、条件判断或者子函数中调用。
             * 2、只能在 React 的函数组件中调用 Hook。
+            * 
 
         * 自定义hook
             * 
@@ -404,11 +405,16 @@
     * 注意:
         * 与 class 组件中的 setState 方法不同，useState 不会自动合并更新对象。你可以用函数式的 setState 结合展开运算符来达到合并更新对象的效果.
         * 要记住 effect 外部的函数使用了哪些 props 和 state 很难。这也是为什么 通常你会想要在 effect 内部 去声明它所需要的函数。 这样就能容易的看出那个 effect 依赖了组件作用域中的哪些值.
-        * 
-
+        
     * 思考题目:
          * 问题:Hook 使用了 JavaScript 的闭包机制 是怎么使用的?
-         * 
+         * react hooks 如何在项目中使用? 一个新的项目. 写 5 个页面. ok
+         * reack hooks 多提供了哪些api? 多什么用法？
+
+    * 好的项目:
+        * https://github.com/tannerlinsley/react-form.
+        * https://github.com/kentcdodds/advanced-react-hooks | https://kentcdodds.com/workshops/advanced-react-hooks/
+        * 
 
 * key 值有什么用?
 
