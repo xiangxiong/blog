@@ -481,9 +481,18 @@
 
 > redux 相关的面试题目
 
+* redux 架构
+
+* flux 起源?
+* 
+
 * 说一下redux 的流程?
 
 * 什么是Redux及其工作原理
+
+
+
+* 
 
 > React Router 相关面试题目.
 
