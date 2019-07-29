@@ -408,17 +408,27 @@
         
     * 思考题目:
          * 问题:Hook 使用了 JavaScript 的闭包机制 是怎么使用的?
-         * react hooks 如何在项目中使用? 一个新的项目. 写 5 个页面. ok
-         * reack hooks 多提供了哪些api? 多什么用法？
-         * useReducer 之后 还要 redux 干啥？
+         * react hooks 如何在项目中使用? 一个新的项目. 写5个页面. ok
+         * reack hooks 多提供了哪些api? 多什么用法?
+            * useState.
+            * useEffect.
+            * useContext.
+            * useReducer.
+            * useCallback.
+            * useMemo.
+            * useRef.
+            * useImperativeHandle.
+            * useLayoutEffect.
+            * useDebugValue.
+
+         * useReducer 之后 还要 redux 干啥？ ok了.
 
     * 好的项目:
         * https://github.com/tannerlinsley/react-form.
         * https://github.com/kentcdodds/advanced-react-hooks | https://kentcdodds.com/workshops/advanced-react-hooks/
-        * 
+        * https://juejin.im/post/5bf20ce6e51d454a324dd0e6#heading-4  hooks 的一些使用场景.
 
 * key 值有什么用?
-
     * 
 
 * 为什么state 是异步的?
@@ -478,19 +488,15 @@
 
 * https://juejin.im/post/5cf0733de51d4510803ce34e#heading-19
 
-
 > redux 相关的面试题目
 
 * redux 架构
 
 * flux 起源?
-* 
 
 * 说一下redux 的流程?
 
 * 什么是Redux及其工作原理
-
-
 
 * 
 
