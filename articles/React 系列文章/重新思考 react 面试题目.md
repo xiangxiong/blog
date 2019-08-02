@@ -43,6 +43,7 @@
     * 不要在render方法内部使用高阶组件。简单来说react的差分算法会去比较 NowElement === OldElement, 来决定要不要替换这个elementTree。也就是如果你每次返回的结果都不是一个引用，react以为发生了变化，去更替这个组件会导致之前组件的状态丢失.
 
     * refs不会传递。 意思就是HOC里指定的ref，并不会传递到子组件，如果你要使用最好写回调函数通过props传下去。
+    * https://my.oschina.net/chkui/blog/1830225
 
     * 最重要的原则就是，注意高阶组件不会修改子组件，也不拷贝子组件的行为。高阶组件只是通过组合的方式将子组件包装在容器组件中，是一个无副作用的纯函数.
 
@@ -150,7 +151,7 @@
     * 参考文献:
         *  https://github.com/sunyongjian/blog/issues/25
         *  https://segmentfault.com/a/1190000010869171
-
+        *  https://juejin.im/post/5d3184596fb9a07eeb13e12c
         *  https://coding.imooc.com/lesson/276.html#mid=18430
 
         * https://medium.com/@franleplant/react-higher-order-components-in-depth-cf9032ee6c3e#.wwp0tbukh

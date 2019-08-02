@@ -1,3 +1,27 @@
+
+React Fiber架构
+ *  https://zhuanlan.zhihu.com/p/37095662
+
+ * React 这个纯视图库其实也是三层架构:
+    * 虚拟DOM 层:
+        * 它负责描述结构与逻辑。
+    * 内部组件层:
+        * 他们负责组件的更新,ReactDOM.render,setState、forceUpdate 都是他们打交道，能让你多次setState,只执行一次真实的渲染，在合适的时机执行你组件实例的生命周期钩子.
+    * 底层渲染层:
+        * 不同的显示介质有不同的渲染方法, 比如说浏览器端，它使用元素节点，文本节点，在Native 端
+    会调用oc,Java的gui,在 canvas 中，有专门的API 方法.
+
+
+
+亮点:
+    * https://juejin.im/post/5d3184596fb9a07eeb13e12c 推出 hooks 解决组件复用的问题.
+    * https://my.oschina.net/chkui/blog/1830225 解决 refs hoc 传递的问题.
+    * https://my.oschina.net/chkui/blog/1570500 解决弹窗的问题文章. 以及异常处理.
+    * https://www.jianshu.com/p/423e2054878a  解决 hoc context 传递的问题.
+    * https://juejin.im/post/5d3184596fb9a07eeb13e12c  从Mixins到HOC再到React Hooks
+
+
+
   * 性能优化是一个系统性的工程，如果只看局部的话，引入算法，当然是越快越好，但从整体来看大话，在关键点引入缓存，可以秒杀N算法，或另辟蹊径，探索事件的本质，可能用户需要的并不是快。。。
 
 

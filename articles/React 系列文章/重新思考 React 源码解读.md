@@ -1,4 +1,36 @@
-写文章的目的:
+* react 源码解析:
+    
+* https://www.zhihu.com/people/si-tu-zheng-mei/posts
+* 
+
+ReactFiber在并发模式下的运行机制
+ * https://zhuanlan.zhihu.com/p/54042084
+
+React fiber的mode
+ * https://zhuanlan.zhihu.com/p/54037407
+
+React Fire: 现代化的React DOM
+ * https://zhuanlan.zhihu.com/p/43545315
+
+React Fiber架构
+ *  https://zhuanlan.zhihu.com/p/37095662
+
+亮点:
+    * https://juejin.im/post/5d3184596fb9a07eeb13e12c 推出 hooks 解决组件复用的问题.
+    * https://my.oschina.net/chkui/blog/1830225 解决 refs hoc 传递的问题.
+    * https://my.oschina.net/chkui/blog/1570500 解决弹窗的问题文章. 以及异常处理.
+    * https://www.jianshu.com/p/423e2054878a  解决 hoc context 传递的问题.
+    * https://juejin.im/post/5d3184596fb9a07eeb13e12c  从Mixins到HOC再到React Hooks
+
+React Fiber性能优化.
+ *  https://zhuanlan.zhihu.com/p/35578843
+
+useCallBack 用法.
+ * https://zhuanlan.zhihu.com/p/56975681
+
+* Fiber Scheduler.
+
+* 写文章的目的:
    * 要自己去想通这个源码的体系，他每个细节，每个变量，到底是什么作用，他处于什么目的去这样去设计.
    * 能够解释这一张图的流程.
    * 构建任务调度的概念.
@@ -59,7 +91,6 @@
     * 
 
 * 构建任务调度的概念.
-    * 
     * 
     * 
 

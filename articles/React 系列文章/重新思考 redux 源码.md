@@ -22,7 +22,6 @@
 
 
 需要搞懂的语法:
-
     * Array.prototype.reduce
     * slice 
     * ...args
@@ -54,5 +53,47 @@
                 }
             }
             ```
-        
 
+            * 如何理解 applyMiddleware.
+
+            ```
+            const middlewareAPI = {
+                getState:store.getState,
+                dispatch:(...args)=>dispatch(...args)
+            }
+
+            const chain = middlewares.map(middleware=>middleware(middlewareAPI))
+
+            dispatch = compose(...chain)(store.dispatch)
+
+            return {
+                ...store,
+                dispatch
+            }
+            ```
+
+            * 有没有自己写过中间件:
+            ```
+            function createThunkMiddleWare(){
+                return ({dispatch,getState}) => next => action => {
+                    if(typeof action === 'function'){
+                        return action(dispatch,getState,extraArgument)
+                    }
+
+                    return next(action);
+                }
+            }
+            ```
+
+ * 讲讲 asyc await 的实现原理:
+    * async 使得后面的 function 始终返回一个promise.
+    * await 必须在 async 函数内部使用,只有等到 await 后面的部分执行后，函数才会继续执行.
+
+ * 基本原理:
+    * async/await 本质上是 gennerator 的语法糖.
+    ```
+    本质上就是个 Promise。所有 async 函数都返回 Promise，所有 await 都相当于把之后的代码放在 then callback 里，而 try-catch 要变为 then 的 rejection callback
+    ```
+
+ * 衍生的问题: 
+    * promise 对象的知识.
