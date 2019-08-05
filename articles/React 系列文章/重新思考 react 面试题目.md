@@ -25,6 +25,12 @@
     * https://codesandbox.io/s/lOo5AV12M.
     * https://codepen.io/gaearon/pen/wqvxGa?editors=0010
 
+
+* 为什么生命周期会有调整?
+    * 
+
+可以谈论: 3 分钟.
+
 * 高阶组件用过吗? 怎么使用的?
 
 * 高阶组件 基本定义:
@@ -81,6 +87,7 @@
 
  * 衍生的知识:
     * 1、使用 compose 组合 HOC.
+
 
 * minxins 使用:
     * 1、es6 不支持 minxins。
@@ -157,6 +164,8 @@
         * https://medium.com/@franleplant/react-higher-order-components-in-depth-cf9032ee6c3e#.wwp0tbukh
 
     *  
+
+ * 可以谈论: 5 分钟.
 
 * react.componet vs react.pureComponent 对比?
 
@@ -319,6 +328,8 @@
 * 问题:
     * 为什么redux 要返回一个新的对象？或者state 为啥不能是不可变的.
 
+ * 可以谈论: 3 分钟.
+
 * React Hooks 相关问题:
     * 1、react 诞生的背景是什么?
         * 1. 在组件之间复用状态逻辑很难
@@ -468,7 +479,7 @@
 
 * React 中 refs 的作用是什么?
     * 
-
+    
 * 展示组件(Presentational component)和容器组件(Container component)之间有何不同
 
 * 类组件(Class component)和函数式组件(Functional component)之间有何不同
@@ -484,6 +495,58 @@
 * redux 有什么缺点?
 
 * react 面试题目. https://github.com/semlinker/reactjs-interview-questions
+
+
+ * 面试题: ref 用过吗?
+ * 答: 用过, ref用于访问 render 方法中创建 dom 元素或者是 React 组件的实例.
+ * ref 有三种用法, string ref,call back ref,createRef.
+ * 推荐使用:createRef.callback ref 不推荐使用 string ref.
+ * 
+ * 为什么不推荐使用ref?
+ * 1、当 ref 定义为string 时,需要 React 追踪当前正在渲染的组件,在 reconciliation 阶段, React Element 创建
+ * 和更新的过程中, ref 会被包装为一个闭包函数, 等待 commit 阶段被执行，这会对React 的性能产生一些影响. 源码：ReactChildFiber.js
+ * 2、当使用 render callback 模式的时候,使用 string ref 会造成 ref 挂载位置产生歧义.
+ * 3、string ref 无法被组合，例如一个第三方库的父组件已经给子组件传递了 ref，那么我们就无法再在子组件上添加 ref 了，而 callback ref 可完美解决此问题
+ * 
+ * 推荐写法:
+     <p ref="stringRef">span1</p>
+     <p ref={ele => (this.methodRef = ele)}>span3</p>
+     <p ref={this.objRef}>span3</p>
+ * 
+ * 关于 callback ref:
+ * 如果 ref 回调以内联函数的方式定义，在更新期间会被调用两次，第一次参数是 null ，之后参数是 DOM 元素。这是因为在每次渲染中都会创建一个新的函数实例。因此，React 需要清理旧的 ref 并且设置新的。通过将 ref 的回调函数定义成类的绑定函数的方式可以避免上述问题
+ * 
+ * 这三种方法有啥区别:
+ * 1、你不能在函数式组件上使用 ref 属性.
+ * 2、为什么不推荐使用string ref:https://github.com/facebook/react/pull/8333.
+ * 3、
+ * 
+ * 衍生的知识点: 
+ * 新的Api React.forwardRef.
+ * 1、主要是穿过父元素直接获取子元素的ref.
+ * 2、解决了HOC中的 ref 无法通过 props 进行传递的问题.
+ * 3、场景:
+ *      
+ * 4、什么是 render callback? (todo，归类到 hoc 模块去复习.).
+ *   https://www.zcfy.cc/article/react-patterns-render-callback-ndash-leonardo-garcia-crespo
+ * 5、什么是闭包函数?
+ * 6、reconlication 和 commit 阶段.  这两个阶段做了什么?
+ * 7、react 创建和更新的流程是什么?
+ * 
+ * 我应该回答到哪一步.
+ * 
+ * 
+ * 参考视频:
+ * https://egghead.io/lessons/react-use-forwardref-in-react-16-3  hoc 中使用 createRef
+ * https://juejin.im/post/5b59287af265da0f601317e3#comment    ref 的前世今生.
+ * http://react.html.cn/docs/refs-and-the-dom.html 官方解释ref ,functon ref 的区别.
+ * https://segmentfault.com/a/1190000015455994   Render props、render callback 和高阶组件皆可互换. 原文:https://medium.com/javascript-inside/render-props-render-callbacks-and-higher-order-components-are-all-interchangeable-1f01f56437fa.
+ * 
+ * 
+ * 解决hoc,ref 向下传递的问题.
+ * 
+ * 怎么解决的?
+
 
 * 三大框架背后的设计思想?
 
@@ -509,7 +572,6 @@
 * 
 
 > javascript 知识点.
-
 
 > javascript 安全知识点
 

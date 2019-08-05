@@ -88,6 +88,8 @@
  * 讲讲 asyc await 的实现原理:
     * async 使得后面的 function 始终返回一个promise.
     * await 必须在 async 函数内部使用,只有等到 await 后面的部分执行后，函数才会继续执行.
+    * https://zhuanlan.zhihu.com/p/53944576 深入理解await 函数.
+    * https://developers.google.com/web/fundamentals/primers/async-functions 
 
  * 基本原理:
     * async/await 本质上是 gennerator 的语法糖.
