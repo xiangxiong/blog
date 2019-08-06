@@ -7,25 +7,19 @@
 我们先使用构造函数创建一个对象：
 
 ```js
-function Person() {
-
+function Person(){
 }
 var person = new Person();
 person.name = 'Kevin';
 console.log(person.name) // Kevin
 ```
-
-在这个例子中，Person 就是一个构造函数，我们使用 new 创建了一个实例对象 person。
-
+在这个例子中，Person 就是一个构造函数，我们使用 new 创建了一个实例对象 person.
 很简单吧，接下来进入正题：
-
 ## prototype
 
-每个函数都有一个 prototype 属性，就是我们经常在各种例子中看到的那个 prototype ，比如：
-
+每个函数都有一个 prototype 属性，就是我们经常在各种例子中看到的那个 prototype ，比如:
 ```js
-function Person() {
-
+function Person(){
 }
 // 虽然写在注释里，但是你要注意：
 // prototype是函数才会有的属性

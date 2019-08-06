@@ -114,7 +114,7 @@ console.log(child2.name); // daisy
 
 ## 3.组合继承
 
-原型链继承和经典继承双剑合璧。
+原型链继承和经典继承双剑合璧.
 
 ```js
 function Parent (name) {

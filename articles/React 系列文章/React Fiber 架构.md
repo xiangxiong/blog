@@ -191,7 +191,6 @@ React Fiber架构
                 fiber.stateNode = new type(props,context)
             }
         }
-
         if(stateNode.render)
         {
             children = stateNode.render()
