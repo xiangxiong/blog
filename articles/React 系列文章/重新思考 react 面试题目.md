@@ -533,7 +533,6 @@
  * 
  * 我应该回答到哪一步.
  * 
- * 
  * 参考视频:
  * https://egghead.io/lessons/react-use-forwardref-in-react-16-3  hoc 中使用 createRef
  * https://juejin.im/post/5b59287af265da0f601317e3#comment    ref 的前世今生.
@@ -585,8 +584,6 @@
 
 
 > HR 会问的问题
-
-
 
 参考文献: 
  * https://segmentfault.com/a/1190000016885832?utm_source=tag-newest

@@ -12,16 +12,6 @@ React fiber的mode
 React Fire: 现代化的React DOM
  * https://zhuanlan.zhihu.com/p/43545315
 
-React Fiber架构
- *  https://zhuanlan.zhihu.com/p/37095662
-
-亮点:
-    * https://juejin.im/post/5d3184596fb9a07eeb13e12c 推出 hooks 解决组件复用的问题.
-    * https://my.oschina.net/chkui/blog/1830225 解决 refs hoc 传递的问题.
-    * https://my.oschina.net/chkui/blog/1570500 解决弹窗的问题文章. 以及异常处理.
-    * https://www.jianshu.com/p/423e2054878a  解决 hoc context 传递的问题.
-    * https://juejin.im/post/5d3184596fb9a07eeb13e12c  从Mixins到HOC再到React Hooks
-
 React Fiber性能优化.
  *  https://zhuanlan.zhihu.com/p/35578843
 
