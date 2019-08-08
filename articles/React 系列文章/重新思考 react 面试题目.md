@@ -502,9 +502,12 @@
  * 
  * 为什么不推荐使用ref?
  * 1、当 ref 定义为string 时,需要 React 追踪当前正在渲染的组件,在 reconciliation 阶段, React Element 创建
- * 和更新的过程中, ref 会被包装为一个闭包函数, 等待 commit 阶段被执行，这会对React 的性能产生一些影响. 源码：ReactChildFiber.js
+ 和更新的过程中, ref 会被包装为一个闭包函数, 等待 commit 阶段被执行，这会对React 的性能产生一些影响. 源码：ReactChildFiber.js
  * 2、当使用 render callback 模式的时候,使用 string ref 会造成 ref 挂载位置产生歧义.
- * 3、string ref 无法被组合，例如一个第三方库的父组件已经给子组件传递了 ref，那么我们就无法再在子组件上添加 ref 了，而 callback ref 可完美解决此问题
+
+ * 3、string ref 无法被组合，例如一个第三方库的父组件已经给子组件传递了 ref，那么我们就无法再在子组件上添加 ref 了，而 callback ref 可完美解决此问题.
+ 
+ 多有什么区别?
  * 
  * 推荐写法:
      <p ref="stringRef">span1</p>
