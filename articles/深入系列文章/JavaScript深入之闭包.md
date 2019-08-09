@@ -51,14 +51,6 @@ ECMAScript中，闭包指的是:
 
 让我们先写个例子，例子依然是来自《JavaScript权威指南》，稍微做点改动:
 
-
-
-
-
-
-
-
-
 ```js
 var scope = "global scope";
 function checkscope(){
@@ -119,21 +111,17 @@ fContext = {
 ## 必刷题
 
 接下来，看这道刷题必刷，面试必考的闭包题：
-
 ```js
 var data = [];
-
 for (var i = 0; i < 3; i++) {
   data[i] = function () {
     console.log(i);
-  };
+  }
 }
-
 data[0]();
 data[1]();
 data[2]();
 ```
-
 答案是都是 3，让我们分析一下原因：
 
 当执行到 data[0] 函数之前，此时全局上下文的 VO 为：

@@ -102,9 +102,7 @@ checkscope();
         globalContext
     ];
 ```
-
 4.checkscope 函数执行上下文初始化：
-
 1. 复制函数 [[scope]] 属性创建作用域链，
 2. 用 arguments 创建活动对象，
 3. 初始化活动对象，即加入形参、函数声明、变量声明，
