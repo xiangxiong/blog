@@ -1,3 +1,5 @@
+* redux 解决什么问题:
+
 
 * 有用处的代码:
     * isPlainObject.
