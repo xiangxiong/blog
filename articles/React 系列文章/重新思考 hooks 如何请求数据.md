@@ -737,17 +737,14 @@ reducer 函数可以通过其参数访问当前状态和传入的操作。到目
 现在，每个状态转换(由操作的类型决定)都返回一个基于先前状态和可选有效负载的新状态。例如，在请求成功的情况下，有效负载用于设置新状态对象的数据。
 
 
-总之，reudcer hook 确保使用自己的逻辑封装状态管理的这一部分。通过提供操作类型和可选有效负载，您总是会得到可预测的状态更改。此外，您永远不会遇到无效状态。例如，以前可能会意外地将isLoading和isError状态设置为true。在这种情况下，UI中应该显示什么?现在，由减速函数定义的每个状态转换都指向一个有效的状态对象。
-
+总之，reudcer hook 确保使用自己的逻辑封装状态管理的这一部分。通过提供操作类型和可选有效负载，您总是会得到可预测的状态更改。此外，您永远不会遇到无效状态。例如，以前可能会意外地将isLoading和isError状态设置为true。在这种情况下，UI中应该显示什么?现在，由减速函数定义的每个状态转换都指向一个有效的状态对象.
 
 
 参考文献:
 https://www.robinwieruch.de/react-hooks-fetch-data/
 redux 项目: https://www.youtube.com/watch?v=R_7XRX7nLsw
 
-
-
 * 源代码练习:
-    * https://github.com/the-road-to-learn-react/react-hooks-introduction.
+* https://github.com/the-road-to-learn-react/react-hooks-introduction.
 
 
