@@ -56,7 +56,7 @@
   
 * 总结：
   * react 16 版本是react 团队对react 底层算法一次大的调整,这个版本叫react fiber,fiber 结构帮我们把整个树的应用更新流程, 能够拆成每个Fiber 对象为单元的更新流程, 这种单元的形式把更新拆分之后，我们可以把每个不同的任务,划分一个优先级，以及我们在更新的过程中, 我们可以中断, 我们可以记录更新到了那个单元，然后中断之后可以继续之前没有做完的更新,而 react 16 之前的setState产生的更新，必须从头到尾更新完成,然后执行之后的代码,如果我们的整个应用树的节点非常的多，那么整个更新会导致他占用的JS运行的时间会非常的长，让页面的其他的一些操作就会进入一个停滞的状态，比如动画刷新，用户输入，会产生卡顿的效果. react 16 之后,他的整体更新流程就是完全不一样的，因为加入了中断，或者是suspense 这样的功能,导致他的整个更新流程的调度非常的复杂.
-
+  
   * reactScheduler 调度过程:
     * 流程图解析:
       * ReactDom.render,setState,forceUpdate。多会产生更新,然后进入scheduleWork 进行调度,第一步操作是addRootToScheuler (可以解释为，我们在更新的过程中不仅仅存在一个root 节点, 每次调用一个ReactDom.render 多会产生fiber 节点) 这些节点可以在内部进行setState 调度,他们会独立的UpdateQueen,有独立的Fiber Tree, 来进行应用的更新, 一个应用当中可能存在多个Root,所以这个时候就要去维护一个在同一时间可能有多个Root 会更新存在,所以需要有一个统一的地方去维护,这个就是addRootToScheuler 的一个作用.
@@ -66,7 +66,7 @@
     * 关于 requestWork 里面做了什么? 主要判断一下 expirationTime 是否是Sync,回想一下,我们在创建一个Update 的时候，我们在调用 ReactDom.render, setState，forceUpdate 去创建一个更新,我们要计算一个 expirationTime 来计算Sync 的expirationTime 或者 异步的expiration Time，这个时候他最终导致, 我们整体的一个更新模式的不同, 因为如果是Sync 模式,代表着这个更新要立马执行,要立马更新到最终的domTree 上面, 所以我们调用的是 performSyncWork, 如果他是一个Sync 模式的，说明他的优先级不是特别高, 他会进入一个 scheuleCallbackWithExpirationTime 调度的流程, 因为他可以不立即更新, 因为他本身的期望，就是 exprationTime 结束之前能够被更新完成就可以了, 所以他优先级非常低, 会进入一个整个调度的流程里面, 
 
     * 问题1: 如何区分他是异步任务还是同步任务?
-    
+
     * 问题2: 
 
     * async scheduler work,这部分就涉及到整个异步的调度的过程, 他利用的浏览器中一个较新的api，requestIdleCallBack,能够让浏览器优先进行他自己的任务, 比如更新动画在每一帧多余的时间的时候，他来调用react 给他设置的一个 callback， 然后他可以去执行react 的更新, 然后 react 会自己挤计算时间，我可以执行我自己的工作,如果这个时间内我的工作没有执行完毕，我要把 javascript 的运行的主动权，交还给浏览器，让浏览器去执行新的动画的更新,来保证一些操作他的高优先级的任务能够被立即执行,所以这就是这个蓝色这片区域他的一个作用，我们调用一个方法叫scheduleDeferedCallBack, 然后会有一个叫 add to callback list 因为我们可能多次调用这个方法,会把这个callback 方法设置进去, 然后在这里面呢? 我们虽然想要使用requestIdleCallBack 这个 api 但是因为大部分浏览器可能还不兼容,他的浏览器兼容性也不是特别好, 所以在react 里面他实现了自己的一个模拟的requestIdleCallBack 的一个方式,那么他具体的实现我们到时候会再跟进,主要通过 requestAnimateFrame 和 javascript 的任务队列的原理来进行一个模拟, 我们调用reqeustIdleCallBack 之后,说明浏览器有空了,我们可以去执行react 的更新了, 这些就是我们加入到异步里面的更新任务.
