@@ -318,7 +318,6 @@ React Fiber架构
 
                 // 更新视图.
             }
-
             ```
 
     * 事实上，当然没有这么简单，考虑到大家看不懂React 的源码，大家可以看一下 anujs 到底是如何实现的?
@@ -328,19 +327,13 @@ React Fiber架构
     * 可以说，setState 是对单个组件的合并渲染，batchedUpdates 是对多个组件的合并渲染。合并渲染是React 最主要的优化手段.
 
     * 为什么要使用深度优先遍历?
-        
         * React 通过Fiber 将书的遍历变成了链表的遍历，但遍历手段有这么多种，为什么偏偏使用DFS?
-
         * 这涉及到一个经典的消息通信问题。如果是父子同行，我们可以通过props 进行通信，子组件可以保存父的引用，可以随时call 父组件。如果是多级组件间的通信，或不存在包含关系的组件通信就麻烦了，于是React 发明了上下文对象(context)。
-
         * context 一开始是一个空对象，为了方便起见，我们称之为 unmaskedContext.
-
         * 当它遇到一个有getChildContext方法的组件时，那个方法会产生一个新context,与上面的合并，然后将新context作为unmaskedContext往下传.
-
-        * 当它遇到一个有contextTypes的组件，context 就抽取一部分内容给这个组件进行实例化。这个只有部分内容的context，我们称之为maskedContext。
+        * 当它遇到一个有contextTypes的组件，context 就抽取一部分内容给这个组件进行实例化。这个只有部分内容的context，我们称之为maskedContext.
         
         * 组件总是从unmaskedContext 中割一块肉下来作为自己的context.
-
         * 如果子组件没有contextTypes，那么它就没有任何属性.
 
         * React 15中,为了传递unmaskedContext，于是大部分方法与钩子都留了一个参数给它。但这么大架子的context 竟然在文档中没有什么地位。那时React 团队还没有想好如何处理组件通信，因此社区一直用舶来品Redux 来救命，这情况一直到Redux 作者入住React 团队.

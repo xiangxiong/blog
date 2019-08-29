@@ -153,8 +153,7 @@ function createObj(o) {
     return new F();
 }
 ```
-
-就是 ES5 Object.create 的模拟实现，将传入的对象作为创建的对象的原型。
+就是 ES5 Object.create 的模拟实现，将传入的对象作为创建的对象的原型.
 
 缺点：
 
@@ -165,13 +164,10 @@ var person = {
     name: 'kevin',
     friends: ['daisy', 'kelly']
 }
-
 var person1 = createObj(person);
 var person2 = createObj(person);
-
 person1.name = 'person1';
 console.log(person2.name); // kevin
-
 person1.firends.push('taylor');
 console.log(person2.friends); // ["daisy", "kelly", "taylor"]
 ```
@@ -292,7 +288,6 @@ function prototype(child, parent) {
     prototype.constructor = child;
     child.prototype = prototype;
 }
-
 // 当我们使用的时候：
 prototype(Child, Parent);
 ```

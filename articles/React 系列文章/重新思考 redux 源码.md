@@ -4,9 +4,8 @@
 
 * 有用处的代码:
     * isPlainObject.
-    * 
-
     * 验证类型:
+ 
     ```
     if (
         (typeof preloadedState === 'function' && typeof enhancer === 'function') ||

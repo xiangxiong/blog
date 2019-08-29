@@ -1,44 +1,4 @@
-## 问题清单
-1、react-router 5 和  react-rotuer 4 有啥区别?
-
-2、react 15 和 react 16 有啥区别?
-
-3、webpack 3 和 webpack 4 有啥区别?
-
-4、reactComponent 和 PureComponent 有啥区别?
-
-5、immutable.js 有啥区别?
-
-6、redux 设计思路?
-
-7、vue 和 react 有啥区别?
-
-8、 es6 的语法掌握，es5 的语法掌握.
-
-9、es6 和 es5 有啥区别?
-
-10、es6 的原型链上扩充了哪些新的方法？
-
-
-11、 react 上为啥要加上key值?  主要为了解决什么问题?
-
-12、 css-loader,sass-loader,style-loader 具体是什么用途?
-
-13、 react 事件委托?
-
-14、 setState 的原理是什么?
-
-15、 pureComponent Vs React.Component 区别? 多是什么场景下使用?
-
-
 ## 专栏
-
-## 深入理解React系列
-1、[React深入之以组件的方式考虑UI构建](https://github.com/xiangxiong/reactCode/blob/master/src/components/TabSelector/TabSelector.MD)
-
-
-2、
-
 ## 基础系列文章
 1、
 
