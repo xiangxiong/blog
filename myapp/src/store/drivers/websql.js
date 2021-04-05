@@ -8,11 +8,22 @@ function setItem(key,value,callback){
   return _setItem.apply(this,[key,value,callback,1]);
 }
 
+function createDbTable(t,dbInfo,callback, errorCallback){
+  t.executeSql(
+    `CREATE TABLE IF NOT EXISTS ${dbInfo.storeName} ` +
+    '(id INTEGER PRIMARY KEY, key unique, value)',
+    [],
+    callback,
+    errorCallback
+  )
+}
+
 function _initStorage(options){
   var self = this;
   var dbInfo = {
     db:null
   };
+
   if(options){
     for(var i in options){
       dbInfo[i] = 
@@ -21,13 +32,26 @@ function _initStorage(options){
           : options[i];
     }
   }
-  
+
   dbInfo.db = openDatabase(
     dbInfo.name,
     String(dbInfo.version),
     dbInfo.description,
     dbInfo.size
-  )
+  );
+
+  dbInfo.db.transaction(function (t) {
+    createDbTable(
+      t,
+      dbInfo,
+      function (){
+        self._dbInfo = db;
+      },
+      function (t,error){
+        console.log(error);
+      }
+    )
+  });
   console.info('options',options);
 }
 

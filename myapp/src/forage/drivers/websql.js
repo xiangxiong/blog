@@ -31,7 +31,6 @@ function _initStorage(options) {
     var dbInfo = {
         db: null
     };
-
     if (options) {
         for (var i in options) {
             dbInfo[i] =
@@ -53,7 +52,6 @@ function _initStorage(options) {
         } catch (e) {
             return reject(e);
         }
-
         // Create our key/value table if it doesn't exist.
         dbInfo.db.transaction(function(t) {
             createDbTable(
