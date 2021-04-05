@@ -6,8 +6,7 @@
     * requestWork
 
     * 
-
-
+    
     ```
     单项链表结构. 插入到最后的一个操作.
     function addRootToSchedule(root: FiberRoot, expirationTime: ExpirationTime) {

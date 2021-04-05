@@ -48,7 +48,7 @@
         * 参考文献:
             * https://react-timeslicing-demo.netlify.com/
             * 验证登录权限 https://auth0.com/blog/time-slice-suspense-react16/
-            * 
+            
     *  Suspense
         * 主要解决什么问题?
             * Suspense主要解决的就是网络IO问题。网络IO问题其实就是我们现在用Redux+saga等等一系列乱七八糟的库来解决的「副作用」问题。
@@ -56,8 +56,7 @@
             * 引入新的api，可以使得任何state更新暂停，直到条件满足时，再渲染（像async/await）.
             * 可以在任何一个组件里放置异步获取数据，而不用做多余的设置
             * 在网速非常快的时候，可设置，整个数据到达Dom，更新完毕以后再渲染
-            * 会给我们提供 high-level (createFetcher)和 low-level( ) 的 API，可以供给业务代码和一些小组件的书写。
-
+            * 会给我们提供 high-level (createFetcher)和 low-level( ) 的 API，可以供给业务代码和一些小组件的书写.
 
     * Lazy
         *

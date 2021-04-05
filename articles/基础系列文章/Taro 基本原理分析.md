@@ -11,16 +11,14 @@ taro 将 react 编译成 小程序原生代码分为几步？
 
 新词汇:
 monorepo
-
 Lerna
-
 Babel 编译器.
 
 JS 抽象语法树.
 https://pines-cheng.github.io/blog/#/posts/55
 https://segmentfault.com/a/1190000016231512
 
-cli 工具编写  动手撸一个工具.
+cli 工具编写 动手撸一个工具.
 https://juejin.im/post/5c93585bf265da611459b7c5
 https://juejin.im/post/5bd90d3ce51d4579362b0390
 https://www.jianshu.com/p/5d0eef9724e0
@@ -87,7 +85,7 @@ https://segmentfault.com/a/1190000019083548
 有哪些优点和缺点?
 最佳实践是什么?
 同类还有其他什么方案?
-Taro 的源码基本流程看看?
+Taro 的源码基本流程看看? 
 原生小程序:
 小程序云开发 来做一个企业小程序.
 

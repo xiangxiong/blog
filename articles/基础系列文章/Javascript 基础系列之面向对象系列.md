@@ -25,14 +25,11 @@
 原型图例
 
 ## 面向对象之常用方法详解.
-
 这些东西可以用来做什么?
-
 class CarStore{
     constructor(floor){
         this.floor = new Floor();
     }
-
     getFloorLocationCount(){
        return floor.getCountCarLocation();
     }
@@ -41,15 +38,11 @@ class CarStore{
 class Floor{
     constructor(){
     }
-
     private int carLocationCount;
-
     private int numberFloor;
-
     getCountCarLocation(number){
         return total;
     }
-
     add(numberFloor){
 
     }

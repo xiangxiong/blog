@@ -10,20 +10,15 @@
 function add(a, b) {
     return a + b;
 }
-
 // 假设 memorize 可以实现函数记忆
 var memoizedAdd = memorize(add);
-
 memoizedAdd(1, 2) // 3
 memoizedAdd(1, 2) // 相同的参数，第二次调用时，从缓存中取出数据，而非重新计算一次
 ```
-
 ## 原理
-
 实现这样一个 memorize 函数很简单，原理上只用把参数和对应的结果数据存到一个对象中，调用时，判断参数对应的数据是否存在，存在就返回对应的结果数据。
 
 ## 第一版
-
 我们来写一版：
 
 ```js
@@ -124,7 +119,7 @@ memoizedAdd(1, 2, 4) // 6
 var memoizedAdd = memorize(add, function(){
     var args = Array.prototype.slice.call(arguments)
     return JSON.stringify(args)
-})
+});
 
 console.log(memoizedAdd(1, 2, 3)) // 6
 console.log(memoizedAdd(1, 2, 4)) // 7

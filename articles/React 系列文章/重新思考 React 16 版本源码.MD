@@ -48,3 +48,7 @@ https://juejin.im/post/5ab7b3a2f265da2378403e57.
 是先调度在更新, fiber 结构帮我们把整个树的以你应用更新流程，拆成每个Fiber 对象为单元的更新流程.
 
 调度图说的是不对的.
+
+
+https://zhuanlan.zhihu.com/p/37095662
+

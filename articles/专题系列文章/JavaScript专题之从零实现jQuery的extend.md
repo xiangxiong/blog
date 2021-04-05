@@ -6,13 +6,12 @@ jQuery 的 extend 是 jQuery 中应用非常多的一个函数，今天我们一
 
 ## extend 基本用法
 
-先来看看 extend 的功能，引用 jQuery 官网：
-
+先来看看 extend 的功能，引用 jQuery 官网:
 > Merge the contents of two or more objects together into the first object.
 
 翻译过来就是，合并两个或者更多的对象的内容到第一个对象中。
 
-让我们看看 extend 的用法：
+让我们看看 extend 的用法:
 
 ```js
 jQuery.extend( target [, object1 ] [, objectN ] )
@@ -48,8 +47,7 @@ console.log($.extend(obj1, obj2, obj3));
 //    d: 4
 // }
 ```
-
-当两个对象出现相同字段的时候，后者会覆盖前者，而不会进行深层次的覆盖。
+当两个对象出现相同字段的时候，后者会覆盖前者，而不会进行深层次的覆盖.
 
 ## extend 第一版
 

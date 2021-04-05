@@ -149,9 +149,7 @@ function flatten(input, shallow, strict, output) {
             output[idx++] = value;
         }
     }
-
     return output;
-
 }
 ```
 

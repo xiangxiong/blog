@@ -4,15 +4,10 @@
 
 ## 定义
 MDN 对闭包的定义为:
-
-> 闭包是指那些能够访问自由变量的函数。
-
+> 闭包是指那些能够访问自由变量的函数.
 那什么是自由变量呢?
-
 > 自由变量是指在函数中使用的，但既不是函数参数也不是函数的局部变量的变量.
-
 由此，我们可以看出闭包共有两部分组成:
-
 > 闭包 = 函数 + 函数能够访问的自由变量
 
 举个例子：
@@ -43,11 +38,9 @@ ECMAScript中，闭包指的是:
 2. 从实践角度：以下函数才算是闭包：
     1. 即使创建它的上下文已经销毁，它仍然存在（比如，内部函数从父函数中返回）
     2. 在代码中引用了自由变量
-
-接下来就来讲讲实践上的闭包。
+接下来就来讲讲实践上的闭包.
 
 ## 分析
-
 让我们先写个例子，例子依然是来自《JavaScript权威指南》，稍微做点改动:
 
 ```js
@@ -64,11 +57,9 @@ foo();
 ```
 
 首先我们要分析一下这段代码中执行上下文栈和执行上下文的变化情况.
+另一个与这段代码相似的例子，在[《JavaScript深入之执行上下文》](https://github.com/mqyqingfeng/Blog/issues/8)中有着非常详细的分析。如果看不懂以下的执行过程，建议先阅读这篇文章.
 
-另一个与这段代码相似的例子，在[《JavaScript深入之执行上下文》](https://github.com/mqyqingfeng/Blog/issues/8)中有着非常详细的分析。如果看不懂以下的执行过程，建议先阅读这篇文章。
-
-这里直接给出简要的执行过程：
-
+这里直接给出简要的执行过程:
 1. 进入全局代码，创建全局执行上下文，全局执行上下文压入执行上下文栈
 2. 全局执行上下文初始化.
 3. 执行 checkscope 函数，创建 checkscope 函数执行上下文，checkscope 执行上下文被压入执行上下文栈.
@@ -120,7 +111,6 @@ for (var i = 0; i < 3; i++) {
 data[0]();
 data[1]();
 data[2]();
-
 ```
 答案是都是 3，让我们分析一下原因：
 
@@ -224,9 +214,6 @@ data[1] 和 data[2] 是一样的道理。
 [《JavaScript深入之执行上下文》](https://github.com/mqyqingfeng/Blog/issues/8)
 
 ## 深入系列
-
-JavaScript深入系列目录地址：[https://github.com/mqyqingfeng/Blog](https://github.com/mqyqingfeng/Blog)。
-
-JavaScript深入系列预计写十五篇左右，旨在帮大家捋顺JavaScript底层知识，重点讲解如原型、作用域、执行上下文、变量对象、this、闭包、按值传递、call、apply、bind、new、继承等难点概念。
-
+JavaScript深入系列目录地址：[https://github.com/mqyqingfeng/Blog](https://github.com/mqyqingfeng/Blog).
+JavaScript深入系列预计写十五篇左右，旨在帮大家捋顺JavaScript底层知识，重点讲解如原型、作用域、执行上下文、变量对象、this、闭包、按值传递、call、apply、bind、new、继承等难点概念.
 如果有错误或者不严谨的地方，请务必给予指正，十分感谢。如果喜欢或者有所启发，欢迎star，对作者也是一种鼓励。

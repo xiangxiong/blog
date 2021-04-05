@@ -129,9 +129,8 @@ window.addEventListener('message', idleTick, false);
 ```
 
 * reactScheduler 4 CallBack 第四节课: (没看懂.todo)
-
   *  这四张多在解释一件事情，是如何1秒执行30帧的?
-  * 
+  *  
 
 * performWork.
   * 核心知识点:

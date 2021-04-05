@@ -2,25 +2,16 @@
 
 ## javascript 基本语法/流程控制语句.
  变量要先声明,在使用.
-
  加减乘除的先后顺序以及优先级. 先乘除，后加减.
-
  && || ! 逻辑判断符号.
-
  if else else if
- 
  while(true) 循环 do ... while 循环先执行一次.
-
  for 循环
-
  continue;  跳出本次执行，继续执行下一次.
-
  break;  跳出整个循环.
-
  switch case default  判断语句. 
-
  i++,++i,--i,i--;
-
+ 
 ## javascript 数组
 
 // 声明一个数组

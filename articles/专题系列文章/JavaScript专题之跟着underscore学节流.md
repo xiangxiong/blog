@@ -67,7 +67,7 @@ container.onmousemove = throttle(getUserAction, 1000);
 function throttle(func, wait) {
     var timeout;
     var previous = 0;
-
+    
     return function() {
         context = this;
         args = arguments;
@@ -77,7 +77,6 @@ function throttle(func, wait) {
                 func.apply(context, args)
             }, wait)
         }
-
     }
 }
 ```

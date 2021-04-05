@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>模拟交通灯</title>
+  <style>
+    html,body{
+      width: 100%;
+      height: 100%;
+      margin:  0 auto;
+    }
+    .traffic{
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .traffic .light{
+      width: 100px;
+      height: 100px;
+      border-radius: 100px;
+    }
+    .traffic.pass .light:nth-child(1){
+      background-color: #0a6;
+    }
+    .traffic.pass .light:nth-child(2){
+      background-color: #cc0;
+    }
+    .traffic.pass .light:nth-child(3){
+      background-color: #c00;
+    }
+  </style>
+  <script>
+    window.onload = function(){
+      loop();
+    };
+    const traffic = document.querySelector('.traffic');
+
+    console.log('traffic',traffic);
+
+    /*
+    *  1、如果我们修改了HTML代码，元素不叫做traffic了，这个函数就不work了.
+    *  2、如果我们想把这个函数复用到其他地方，我们还得在那个地方重建这个traffic对象.
+    *  3、封装性被完全被破坏.
+    * 
+    *  在函数有一个不明来源的变量
+    *  它在函数内部不具有意义.
+    */
+    function loop(){
+      traffic.className = 'traffic pass';
+      setTimeout(()=>{
+        traffic.className = 'traffic wait';
+        setTimeout(()=>{
+          traffic.className = 'traffic stop';
+          setTimeout(loop,3500);
+        },1500);
+      },5000);
+    }
+
+    function loop01(subject){
+      subject.className = 'traffic pass';
+      setTimeout(()=>{
+        subject.className = 'traffic wait';
+        setTimeout(()=>{
+          subject.className = 'traffic stop';
+          setTimeout((loop.bind(null,subject)),3500);
+        },1500);
+      },5000);
+    }
+
+    loop();
+  </script>
+</head>
+<body>
+  <header>模拟交通灯</header>
+  <main> 
+    <div class="traffic pass">
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+    </div>
+  </main>
+</body>
+</html>

@@ -3,15 +3,10 @@
 * 如果您对这个新的React特性一无所知，请将本文签入React Hooks。如果您想为展示的示例签出完成的项目，这些示例展示了如何在React with Hooks中获取数据，请clone 出这个 https://github.com/the-road-to-learn-react/react-hooks-introduction 存储库.
 
 * 如果你只是想有一个现成的钩子来抓取数据:npm安装use-data-api，并遵循文档.
-
 * 注意: 将来,React hooks 不会用于在React中获取数据,取而代之的是一个叫做 Suspense 的功能。尽管如此，下面的演练仍然是了解React中的状态和效果挂钩的好方法.
-
 * 如果您不熟悉React中的数据获取，请检查我的文章《在React中获取大量数据》。它将带您了解如何使用React类组件获取数据，如何使用Render Prop Component 组件和高阶组件使其可重用，以及如何处理错误处理和加载自旋器。在本文中，我想用函数组件中的React Hooks 向您展示所有这些.
-
 * App组件显示了一个项目列表(hit = Hacker News articles)。状态和状态更新函数来自状态钩子useState，它负责管理我们将为App组件获取的数据的本地状态。初始状态是表示数据的对象中的空命中列表。目前还没有人为该数据设置任何状态.
-
 * 我们将使用axios来获取数据，但是您可以使用另一个数据获取库或浏览器的本机获取API。如果还没有安装axios，可以使用npm install axios在命令行上安装。然后实现数据抓取的效果挂钩.
-
  名为useEffect的效果钩子用于使用axios从API获取数据，并使用状态钩子的update函数将数据设置为组件的本地状态。承诺解析使用async/ wait.
 
 然而，当您运行应用程序时，您应该陷入一个糟糕的循环。effect钩子在组件挂载时运行，也在组件更新时运行。因为我们在每次数据获取之后都要设置状态，所以组件会更新并再次运行效果。它一次又一次地获取数据。这是一个错误，需要避免。我们只想在组件挂载时获取数据。这就是为什么您可以为effect hook提供一个空数组作为第二个参数，以避免在组件更新时激活它，但只在组件挂载时激活它.
@@ -36,10 +31,9 @@ function App() {
 
       setData(result.data);
     };
-
     fetchData();
-  }, []);
-
+  },[]);
+  
   return (
     <ul>
       {data.hits.map(item => (

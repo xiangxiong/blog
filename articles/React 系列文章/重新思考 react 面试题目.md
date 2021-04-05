@@ -7,59 +7,52 @@
     - 卸载阶段: 这是组件生命周期的最后阶段,组件被销毁从DOM中删除.
 
 * 一些重要的生命周期方法:
-    * componentWillMount**()** – 在渲染之前执行，在客户端和服务器端都会执行。
-    * componentDidMount – 仅在第一次渲染后在客户端执行.
-    * componentWillReceiveProps 当从父类接收到 props 并且在调用另一个渲染器之前调用.
-    * shouldComponentUpdate – 根据特定条件返回 true 或 false。如果你希望更新组件.
-    * componentWillUpdate**()** – 在 DOM 中进行渲染之前调用.
-    * componentDidUpdate**()** – 在渲染发生后立即调用.
-    * componentWillUnmount**()** – 从 DOM 卸载组件后调用。用于清理内存空间.
+    * componentWillMount() – 在渲染之前执行，在客户端和服务器端都会执行。
+    * componentDidMount() – 仅在第一次渲染后在客户端执行.
+    * componentWillReceiveProps() 当从父类接收到 props 并且在调用另一个渲染器之前调用.
+    * shouldComponentUpdate() – 根据特定条件返回 true 或 false。如果你希望更新组件.
+    * componentWillUpdate() – 在 DOM 中进行渲染之前调用.
+    * componentDidUpdate() – 在渲染发生后立即调用.
+    * componentWillUnmount() – 从DOM卸载组件后调用.用于清理内存空间.
 
 * 出彩的地方:
-    * 16 版本里面新增了:componentDidCatch 这个钩子函数，划分出错误组件与边界组件，每个边界组件能修复下方组件错误一次，再次出错，转交给更上层的组件来处理，解决异常处理问题.
+    * 16 版本里面新增了: componentDidCatch 这个钩子函数,划分出错误组件与边界组件，每个边界组件能修复下方组件错误一次，再次出错，转交给更上层的组件来处理，解决异常处理问题.
     * 自React16起, 任何未被错误边界捕获的错误将会导致整个React 组件被卸载. 
     * 注意错误边界仅可以捕获其子组件的错误，它无法捕获其自身的错误。如果一个错误边界无法渲染错误信息，则错误会冒泡至最近的上层错误边界，这也类似于 JavaScript 中 catch {} 的工作机制.
-
     * https://codesandbox.io/s/lOo5AV12M.
     * https://codepen.io/gaearon/pen/wqvxGa?editors=0010
 
 * 为什么生命周期会有调整?
     * 
-
+    * 
 可以谈论: 3 分钟.
 
 * 高阶组件用过吗? 怎么使用的?
-
 * 高阶组件 基本定义:
     * 高阶组件就是一个高阶函数.
     * const EnhancedComponent = higherOrderComponent(WrappedComponent);
     * 高阶组件最大的好处就是解耦和灵活性，在react的开发中还是很有用的.
 
 * 你在项目里面是怎么使用的?
-    * 1、抽取公用代码和业务逻辑.功能和页面类似的页面，可以把一些共同的操作抽离到HOC组件中.
-    * 2、抽离state. react 处理表单的时候，如果使用了受控组件，可以把onChange 事件同步改变state 的代码，封装到高阶组件中,还有提交的事件.
-    * 3、劫持渲染.(loading 动效,页面权限管理)
+    * 1、抽取公用代码和业务逻辑.功能和页面类似的页面,可以把一些共同的操作抽离到HOC组件中.
+    * 2、抽离state. react 处理表单的时候, 如果使用了受控组件, 可以把onChange 事件同步改变state 的代码，封装到高阶组件中,还有提交的事件.
+    * 3、劫持渲染.(loading 动效,页面权限管理).
     * 4、操作props,增加用户信息属性对象.
     * 5、反向继承. 场景:两个页面的相似度非常高，要新加一些属性的时候可以考虑使用.
 
 * 问 题:
     * 不要在render方法内部使用高阶组件。简单来说react的差分算法会去比较 NowElement === OldElement, 来决定要不要替换这个elementTree。也就是如果你每次返回的结果都不是一个引用，react以为发生了变化，去更替这个组件会导致之前组件的状态丢失.
-
-    * refs不会传递。 意思就是HOC里指定的ref，并不会传递到子组件，如果你要使用最好写回调函数通过props传下去。
-    
+    * refs不会传递。 意思就是HOC里指定的ref，并不会传递到子组件，如果你要使用最好写回调函数通过props传下去.
     * https://my.oschina.net/chkui/blog/1830225
-
     * 最重要的原则就是，注意高阶组件不会修改子组件，也不拷贝子组件的行为。高阶组件只是通过组合的方式将子组件包装在容器组件中，是一个无副作用的纯函数.
 
     * 继承和组合有什么区别?
-
         * 继承的优点: 继承的优点是子类可以重写父类的方法来方便实现对父类的扩展.
-
-        * 集成的缺点:  is a 的关系.
+        * 集成的缺点: is a 的关系.
             * 1、父类的内部细节对子类是可见的.
             * 2、子类从父类继承的方法在编译的时候就确定下来了，所以无法在运行期间改变从父类继承的方法和行为.
             * 3、子类与父类是一种高耦合，违背了面向对象的思想.
-            * 4、继承关系最大的弱点是打破了封装，子类能够访问父类的实现细节，子类与父类之间紧密耦合，子类缺乏独立性，从而影响了子类的可维护性。
+            * 4、继承关系最大的弱点是打破了封装，子类能够访问父类的实现细节，子类与父类之间紧密耦合，子类缺乏独立性，从而影响了子类的可维护性.
             * 5、不支持动态继承，在运行时，子类无法选择不同的父类。
 
         * 组合 has a 关系.
@@ -133,10 +126,8 @@
         init(){
             var add3 = this.add(3);
             console.log('add3',add3(4));
-
             let add4 = (x,y) => x + y;
             console.log('add4',add4(3,4));
-
             // https://zhuanlan.zhihu.com/p/26794822
             let add5 = x => y => x + y;
             console.log('add5',add5(3)(4));
@@ -148,27 +139,19 @@
             }
         }
     ```
-
     * 衍生的问题: 受控组件可以理解为通过事件来控制，每个状态的改变多有一个与之相关的处理函数。好处是直接修改或验证用户输入.
-
     * 非受控组件不同于受控组件数据是react组件处理的,通过dom进行处理.
-
     * 参考文献:
         *  https://github.com/sunyongjian/blog/issues/25
         *  https://segmentfault.com/a/1190000010869171
         *  https://juejin.im/post/5d3184596fb9a07eeb13e12c
         *  https://coding.imooc.com/lesson/276.html#mid=18430
-
-        * https://medium.com/@franleplant/react-higher-order-components-in-depth-cf9032ee6c3e#.wwp0tbukh
-
+        *  https://medium.com/@franleplant/react-higher-order-components-in-depth-cf9032ee6c3e#.wwp0tbukh
     *  
-
  * 可以谈论: 5 分钟.
 
-* react.componet vs react.pureComponent 对比?
-
+ * react.componet vs react.pureComponent 对比?
     * React.PureComponent 与 React.Component 几乎完全相同，但 React.PureComponent 通过prop和state的浅对比来实现 shouldComponentUpate().
-
     * 如果对象嵌套层级较深或者函数该如何做比较呢?
         * 对于引用类型只能对其进行递归比较才能判断其是否相等.
         * 实现代码:
@@ -181,16 +164,13 @@
             if(arr1 === arr2){
                 return true;
             }
-
             if(arr1.length !== arr2.length){
                 return false;
             }
-
             // 浅度检测
             if(deepCheck){
                 return arr1.toString() === arr2.toString();
             }
-
             // 判断每个基本数据类型是否一样.
             var type1,type2;
             for(var i=0;i<arr1.length;i++){
@@ -247,24 +227,20 @@
         * https://imweb.io/topic/598973c2c72aa8db35d2e291.
         ```
     * 
-    * React.PureComponent 的 shouldComponentUpdate() 只会对对象进行浅对比。如果对象包含复杂的数据结构，它可能会因深层的数据不一致而产生错误的否定判断(表现为对象深层的数据已改变视图却没有更新, 原文：false-negatives)。当你期望只拥有简单的props和state时，才去继承 PureComponent ，或者在你知道深层的数据结构已经发生改变时使用 forceUpate() 。或者，考虑使用不可变对象来促进嵌套数据的快速比较.
+    * React.PureComponent 的 shouldComponentUpdate() 只会对对象进行浅对比。如果对象包含复杂的数据结构，它可能会因深层的数据不一致而产生错误的否定判断(表现为对象深层的数据已改变视图却没有更新, 原文：false-negatives)。当你期望只拥有简单的props和state时，才去继承 PureComponent ，或者在你知道深层的数据结构已经发生改变时使用 forceUpate(). 或者，考虑使用不可变对象来促进嵌套数据的快速比较.
 
     * 此外,React.PureComponent 的 shouldComponentUpate() 会忽略整个组件的子级。请确保所有的子级组件也是”Pure”的.
 
 * 扩展的知识点?
 
     * 深拷贝和浅拷贝.
-
     （1）基本类型：
 5种基本数据类型Undefined、Null、Boolean、Number 和 String，变量是直接按值存放的，存放在栈内存中的简单数据段，可以直接访问.
-
     （2）引用类型：
 存放在堆内存中的对象，变量保存的是一个指针，这个指针指向另一个位置。当需要访问引用类型（如对象，数组等）的值时，首先从栈中获得该对象的地址指针，然后再从堆内存中取得所需的数据.
-
     JavaScript存储对象都是存地址的，所以浅拷贝会导致 obj1 和obj2 指向同一块内存地址。改变了其中一方的内容，都是在原来的内存上做修改会导致拷贝对象和源对象都发生改变，而深拷贝是开辟一块新的内存地址，将原对象的各个属性逐个复制进去。对拷贝对象和源对象各自的操作互不影响.
 
     * 浅拷贝实现的方式
-
         *  object.assign 来解决这个问题.
         *  扩展运算符来解决. （…）
         *  存在的问题:
@@ -304,24 +280,21 @@
         * pureComponent 源码中只对,Object.is 可以对基本数据类型,做出精确的比较,但是对于引用类型是没有办法直接比较的.
 
     * immutable 解决什么问题? 为什么用immutable 对象? 项目里面是怎么使用的?
-
         1、为什么用immutable?
 
     * Immutable Data 就是一旦创建，就不能被更改的数据。
  对Immutable 对象的任何修改或添加删除多会返回一个新的Immutable 对象.Immutable 实现的原理是 Persistent Data Structure（持久化数据结构），也就是使用旧数据创建新数据时，要保证旧数据同时可用且不变。同时为了避免deepCopy 把所有节点都复制一遍带来的性能损耗。Immutable 使用了 结构共享，即如果对象树一个节点发生变化，只修改这个节点和受到影响的父节点，其它节点共享. (算法如何实现？)
-
- 优点:
+ 
+ 优 点:
 * 节省内存
 * mmutable.js 使用了 Structure Sharing 会尽量复用内存，甚至以前使用的对象也可以再次被复用。没有被引用的对象会被垃圾回收.
-
 * Immutable 降低了 Mutable 带来的复杂度.
-    
- 缺点:
-* 需要学习新的 API.
+
+ 缺 点:
+* 需要学习新的API.
 * 容易与原生对象混淆.
 * 虽然 Immutable.js 尽量尝试把 API 设计的原生对象类似，有的时候还是很难区别到底是 Immutable 对象还是原生对象，容易混淆操作.
-
-* ImmutableJS 最大的两个特性就是: immutable data structures（持久性数据结构）与 structural sharing（结构共享），持久性数据结构保证数据一旦创建就不能修改，使用旧数据创建新数据时，旧数据也不会改变，不会像原生 js 那样新数据的操作会影响旧数据。而结构共享是指没有改变的数据共用一个引用，这样既减少了深拷贝的性能消耗,也减少了内存.
+* ImmutableJS 最大的两个特性就是: immutable data structures (持久性数据结构）与 structural sharing（结构共享），持久性数据结构保证数据一旦创建就不能修改，使用旧数据创建新数据时，旧数据也不会改变，不会像原生 js 那样新数据的操作会影响旧数据。而结构共享是指没有改变的数据共用一个引用，这样既减少了深拷贝的性能消耗,也减少了内存.
 
 * 问题:
     * 为什么redux 要返回一个新的对象？或者state 为啥不能是不可变的.
@@ -406,9 +379,9 @@
             * 每次渲染后都执行清理或者执行 effect 可能会导致性能问题.
                 * 这是很常见的需求，所以它被内置到了 useEffect 的 Hook API 中。如果某些特定值在两次重渲染之间没有发生变化，你可以通知 React 跳过对 effect 的调用，只要传递数组作为 useEffect 的第二个可选参数即可
                 ```
-                useEffect(() => {
-                document.title = `You clicked ${count} times`;
-                }, [count]); // 仅在 count 更改时更新
+                    useEffect(() => {
+                    document.title = `You clicked ${count} times`;
+                    }, [count]); // 仅在 count 更改时更新
                 ```
                 * 如果想执行只运行一次的 effect（仅在组件挂载和卸载时执行），可以传递一个空数组（[]）作为第二个参数。这就告诉 React 你的 effect 不依赖于 props 或 state 中的任何值，所以它永远都不需要重复执行。这并不属于特殊情况 —— 它依然遵循依赖数组的工作方式.
 
@@ -442,15 +415,16 @@
     * 
 
 * 为什么state 是异步的?
-    *
+    * setState本身的执行过程是同步的，只是因为在react的合成事件与钩子函数中执行顺序在更新之前，所以不能直接拿到更新后的值，形成了所谓的异步.
 
 * 为什么state 更新进行批处理?
-    *
+    * setState 通过一个队列机制实现 state 更新。当执行 setState 时，会将需要更新的 state 合并
+后放入状态队列，而不会立刻更新 this.state，队列机制可以高效地批量更新 state。如果不通过
+setState 而直接修改 this.state 的值，那么该 state 将不会被放入状态队列中，当下次调用
+setState 并对状态队列进行合并时，将会忽略之前直接被修改的 state，而造成无法预知的错误。
 
 * context api 用过没有?
-
     *
-
 * 高阶组件有没有用过?
     * 
 
@@ -477,7 +451,6 @@
 
 * React 中 refs 的作用是什么?
     * 
-    
 * 展示组件(Presentational component)和容器组件(Container component)之间有何不同
 
 * 类组件(Class component)和函数式组件(Functional component)之间有何不同
@@ -504,9 +477,7 @@
  * 1、当 ref 定义为string 时,需要 React 追踪当前正在渲染的组件,在 reconciliation 阶段, React Element 创建
  和更新的过程中, ref 会被包装为一个闭包函数, 等待 commit 阶段被执行，这会对React 的性能产生一些影响. 源码：ReactChildFiber.js
  * 2、当使用 render callback 模式的时候,使用 string ref 会造成 ref 挂载位置产生歧义.
-
  * 3、string ref 无法被组合，例如一个第三方库的父组件已经给子组件传递了 ref，那么我们就无法再在子组件上添加 ref 了，而 callback ref 可完美解决此问题.
- 
  多有什么区别?
  * 
  * 推荐写法:
@@ -547,7 +518,6 @@
  * 
  * 怎么解决的?
 
-
 * 三大框架背后的设计思想?
 
 * https://juejin.im/post/5cf0733de51d4510803ce34e#heading-19
@@ -562,7 +532,6 @@
 
 * 什么是Redux及其工作原理
 
-
 > React Router 相关面试题目.
 
 * 什么是React路由器及其工作原理
@@ -571,9 +540,7 @@
 * 
 
 > javascript 知识点.
-
-> javascript 安全知识点
-
+* 
 
 > 项目准备
 * 
@@ -585,7 +552,6 @@
 
 > 简历更新
 
-
 > HR 会问的问题
 
 参考文献: 
@@ -594,6 +560,13 @@
  * https://muyiy.vip/question/#%E7%AC%AC-1-%E9%A2%98%EF%BC%9A%E5%86%99-react-vue-%E9%A1%B9%E7%9B%AE%E6%97%B6%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%9C%A8%E5%88%97%E8%A1%A8%E7%BB%84%E4%BB%B6%E4%B8%AD%E5%86%99-key%EF%BC%8C%E5%85%B6%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F
  * https://github.com/yygmind/blog
 
+* Concurrent 模式介绍:
+> Concurrent 模式是一组 React 的新功能，可帮助应用保持响应，并根据用户的设备性能和网速进行适当的调整.
+https://zh-hans.reactjs.org/docs/concurrent-mode-intro.html
+
+> 可以中断渲染.
+
+* Suspense 挂起功能.
 
 
 

@@ -46,7 +46,7 @@ greet('kevin');
 compose(d, compose(c, compose(b, a)))
 ```
 
-为什么我们不写一个帅气的 compose 函数支持传入多个函数呢？这样就变成了：
+为什么我们不写一个帅气的 compose 函数支持传入多个函数呢？这样就变成了
 
 ```js
 compose(d, c, b, a)
